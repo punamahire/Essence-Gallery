@@ -1,0 +1,26 @@
+{
+  "users": [
+    {
+      "email": "punam@essencegallery.com",
+      "name": "Punam Ahire",
+      "id": 1
+    },
+    {
+      "email": "mike@essencegallery.com",
+      "name": "Mike Myers",
+      "id": 2
+    }
+  ],
+  "galleries": [],
+  "photos": [],
+  "layouts": [
+    {
+        "name": "3-column-grid",
+        "id": 1
+    },
+    {
+        "name": "4-column-grid",
+        "id": 2   
+    }
+  ]
+}
