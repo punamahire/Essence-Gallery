@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addGallery } from '../../modules/GalleryManager';
 import { getAllLayouts } from '../../modules/LayoutManager';
-import './GalleryAddEditForm.css'
+import { ImageUploader } from '../ui/ImageUploader';
+import './GalleryAddEditForm.css';
 
 export const GalleryAddForm = () => {
 
@@ -39,8 +40,8 @@ export const GalleryAddForm = () => {
 	const handleClickSaveGallery = (event) => {
 		event.preventDefault()
 
-        const userObj = JSON.parse(sessionStorage.getItem("gallery_user"))
-		galleryObj.userId = userObj.id;
+        const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
+		galleryObj.userId = activeUser.id;
 
 		if (galleryObj.name === "" || galleryObj.date === "" || galleryObj.layoutId === 0) {
 			window.alert("Please enter name, date and layout for the gallery")
@@ -81,18 +82,19 @@ export const GalleryAddForm = () => {
 					</select>
 				</div>
 			</fieldset>
+
 			<div className="galleryFormButtons">
 				<button type="button" className="btn btn-primary"
 					disabled={isLoading}
 					onClick={handleClickSaveGallery}>
 					Save Gallery
-			</button>
-			<button 
-				type="button"
-				className="btn btn-primary"
-				onClick={() => {navigate("/galleries")}}>
-				Cancel
-			</button>
+				</button>
+				<button 
+					type="button"
+					className="btn btn-primary"
+					onClick={() => {navigate("/galleries")}}>
+					Cancel
+				</button>
 			</div>
 		</form>
 	)
