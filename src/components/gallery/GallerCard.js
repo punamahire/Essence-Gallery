@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap'
 import { getPhotosByGalleryId, deletePhoto } from "../../modules/PhotoManager";
+import { ShowGridLayout } from "../galleryPreview/ShowGridLayout";
 import { Photos } from "../photo/Photos"
 
 export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
     const [photos, setPhotos] = useState([]);
+    const {galleryId} = useParams();
     
     const getPhotosFromGallery = () => {
         // After the data comes back from the API, we
@@ -26,30 +29,35 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
     }, []);
 
     return (
-      <div className="card">
-        <div className="card-content">
-          <h3>Gallery Name: <span className="card-galleryname">
-            {singleGallery.name}
-          </span></h3>
-          <p>Date: {singleGallery.date}</p>
-          {/* <p>public url to view the gallery: {singleGallery.publicUrl}</p>
-          <button type="button" onClick={() => copyGalleryUrl(singleGallery.publicUrl)}>Copy</button> */}
+      <>
+        <Container>
+          <Row>
+            <Col>
+              <h3>Gallery Name: 
+                <span className="card-galleryname">
+                  {singleGallery.name}
+                </span>
+              </h3>
+              <p>Date: {new Date(singleGallery.date).toDateString()} </p>
+              {/* <p>public url to view the gallery: {singleGallery.publicUrl}</p>
+              <button type="button" onClick={() => copyGalleryUrl(singleGallery.publicUrl)}>Copy</button> */}
 
-          <div>
-            {photos.map(photo => 
-                <Photos 
-                    key={photo.id} 
-                    singlePhoto={photo} 
-                    handleDeletePhoto={handleDeletePhoto} 
-                />
-            )}
-          </div>          
+              <Link to={`/galleries/${singleGallery.id}/edit`}>
+                <button>Edit Gallery</button>
+              </Link>
+              <button type="button" onClick={() => handleDeleteGallery(singleGallery.id)}>Remove Gallery</button>
+            </Col>
+            <Col>
+              {photos.map(photo => 
+                  <col4>
+                    <img style={{width: 200, height: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
+                  </col4>
 
-          <Link to={`/galleries/${singleGallery.id}/edit`}>
-            <button>Edit Gallery</button>
-          </Link>
-          <button type="button" onClick={() => handleDeleteGallery(singleGallery.id)}>Remove Gallery</button>
-        </div>
-      </div>
+              )}
+            </Col>  
+            <hr></hr>        
+          </Row>
+        </Container>
+    </>
     );
 }

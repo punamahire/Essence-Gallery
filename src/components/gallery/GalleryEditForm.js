@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {useNavigate, useParams} from "react-router-dom";
+import { Form, Row, Col } from 'react-bootstrap'
 import { getGalleryById, updateGallery } from '../../modules/GalleryManager'
 import { getAllLayouts } from "../../modules/LayoutManager";
 import { getPhotosByGalleryId, deletePhoto } from "../../modules/PhotoManager";
@@ -18,7 +19,7 @@ export const GalleryEditForm = () => {
   const navigate = useNavigate();
 
   const getPhotosFromGallery = () => {
-    console.log('Getting new photos');
+    console.log('Getting photos from gallery');
     // After the data comes back from the API, we
     // use the setPhotos function to update state
     return getPhotosByGalleryId(galleryId).then(photosFromAPI => {
@@ -60,8 +61,9 @@ export const GalleryEditForm = () => {
   }
 
   useEffect(() => {
+
+    console.log("inside Edit form useEffect")
     //load layout data and setState
-    
     getAllLayouts().then(layoutsFromAPI => {
       setLayouts(layoutsFromAPI)
     });
@@ -74,11 +76,12 @@ export const GalleryEditForm = () => {
       });
     
     getPhotosFromGallery();
+
   }, []);
 
   return (
     <>
-      <form>
+      <Form>
         <fieldset>
           <div className="form-group">
             <label htmlFor="name">Gallery name</label>
@@ -130,15 +133,21 @@ export const GalleryEditForm = () => {
         </fieldset>
 
         <fieldset>
-          <div>
+          <Row>
             {photos.map(photo => 
-                <Photos 
+              <Col>
+                {/* <Photos 
                     key={photo.id} 
                     singlePhoto={photo} 
                     handleDeletePhoto={handleDeletePhoto}
-                />
+                /> */}
+                <col4>
+                  <img style={{width: 200, height: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
+                  <button type="button" onClick={() => handleDeletePhoto(photo.id)}>Remove Photo</button>
+                </col4>
+              </Col>
             )}
-          </div> 
+          </Row> 
         </fieldset>
 
           {/* Be sure to include userId. Get it from sessionStorage */}
@@ -157,7 +166,7 @@ export const GalleryEditForm = () => {
             Cancel
           </button>
 
-      </form>
+      </Form>
     </>
   );
 }

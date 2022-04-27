@@ -50,7 +50,9 @@ export const GalleryAddForm = () => {
 			//once complete, change the url and display the Gallery list
 			setIsLoading(true);
 			addGallery(galleryObj)
-				.then(() => navigate("/galleries"))
+				.then(addedGallery => {
+					navigate(`/galleries/${addedGallery.id}/edit`)
+				});
 		}
 	}   
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Container, Row, Col} from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { getAllGalleries, deleteGallery } from '../../modules/GalleryManager';
 import { deletePhoto, getPhotosByGalleryId } from '../../modules/PhotoManager';
@@ -45,24 +46,23 @@ export const GalleryList = () => {
   // Use .map() to "loop over" the Galleries array to show a list of Gallery 
   return (
   <>
-   <main>
-    <section className="section-content">
-        <h1>Your galleries</h1>
-        <button type="button" className="btn btn-primary"
-            onClick={() => {navigate("/galleries/create")}}>
-            Add New Gallery
-        </button>
-    </section>
-    <p>Rendering GalleryList</p>
-    <div className="container-cards">
-      {galleries.map(gallery => 
-        <GalleryCard 
-          key={gallery.id} 
-          singleGallery={gallery} 
-          handleDeleteGallery={handleDeleteGallery} />
-      )}
-    </div>
-    </main>
+   <Container>
+      <section className="section-content">
+          <h1>Your galleries</h1>
+          <button type="button" className="btn btn-primary"
+              onClick={() => {navigate("/galleries/create")}}>
+              Add New Gallery
+          </button>
+      </section>
+      <div className="container-cards">
+        {galleries.map(gallery => 
+          <GalleryCard 
+            key={gallery.id} 
+            singleGallery={gallery} 
+            handleDeleteGallery={handleDeleteGallery} />
+        )}
+      </div>
+    </Container>
   </>
 
   );
