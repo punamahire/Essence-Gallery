@@ -17,8 +17,8 @@ export const getAllPhotos = () => {
     .then(res => res.json())
 }
 
-export const getPhotosByGalleryId = (galleryId) => {
-    return fetch(`${remoteURL}/photos?galleryId=${galleryId}`)
+export const getPhotosByGalleryId = (galleryId, limit=0) => {
+    return fetch(`${remoteURL}/photos?galleryId=${galleryId}${limit !== 0 && '&_limit='+limit }`)
     .then(res => res.json())
 }
 

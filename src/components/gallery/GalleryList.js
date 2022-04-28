@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { getAllGalleries, deleteGallery } from '../../modules/GalleryManager';
 import { deletePhoto, getPhotosByGalleryId } from '../../modules/PhotoManager';
 import { GalleryCard } from './GallerCard';
+import './GalleryList.css'
 
 export const GalleryList = () => {   
 
@@ -46,7 +47,7 @@ export const GalleryList = () => {
   // Use .map() to "loop over" the Galleries array to show a list of Gallery 
   return (
   <>
-   <Container>
+   <Container className="gal-list-container">
       <section className="section-content">
           <h1>Your galleries</h1>
           <button type="button" className="btn btn-primary"

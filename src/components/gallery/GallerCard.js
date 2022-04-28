@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { Link, useParams } from "react-router-dom";
-import { Container, Row, Col } from 'react-bootstrap'
-import { getPhotosByGalleryId, deletePhoto } from "../../modules/PhotoManager";
-import { ShowGridLayout } from "../galleryPreview/ShowGridLayout";
-import { Photos } from "../photo/Photos"
+import { Row, Col } from 'react-bootstrap'
+import { getPhotosByGalleryId } from "../../modules/PhotoManager";
+import './GalleryCard.css'
 
 export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
@@ -13,14 +12,9 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
     const getPhotosFromGallery = () => {
         // After the data comes back from the API, we
         // use the setPhotos function to update state
-        return getPhotosByGalleryId(singleGallery.id).then(photosFromAPI => {
+        return getPhotosByGalleryId(singleGallery.id, 3).then(photosFromAPI => {
         setPhotos(photosFromAPI)
         });
-    };
-
-    const handleDeletePhoto = id => {
-        deletePhoto(id)
-        .then(() => getPhotosFromGallery());
     };
 
     // got the photos from the API on the component's first render
@@ -30,34 +24,40 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
     return (
       <>
-        <Container>
-          <Row>
-            <Col>
-              <h3>Gallery Name: 
-                <span className="card-galleryname">
-                  {singleGallery.name}
-                </span>
-              </h3>
-              <p>Date: {new Date(singleGallery.date).toDateString()} </p>
-              {/* <p>public url to view the gallery: {singleGallery.publicUrl}</p>
-              <button type="button" onClick={() => copyGalleryUrl(singleGallery.publicUrl)}>Copy</button> */}
-
-              <Link to={`/galleries/${singleGallery.id}/edit`}>
-                <button>Edit Gallery</button>
-              </Link>
-              <button type="button" onClick={() => handleDeleteGallery(singleGallery.id)}>Remove Gallery</button>
-            </Col>
-            <Col>
-              {photos.map(photo => 
-                  <col4>
-                    <img style={{width: 200, height: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                  </col4>
-
-              )}
-            </Col>  
-            <hr></hr>        
-          </Row>
-        </Container>
+        <div className="card" style={{marginTop: '20px'}}>
+          <div className="card-header">
+            <strong>Gallery Name: {singleGallery.name}</strong>
+          </div>
+          <div className="card-body">
+            <Row>
+              <Col className="card-content card-elements">
+                <p>Date: {new Date(singleGallery.date).toDateString()} </p>   
+                <div>
+                  <input value={`http://localhost:3000/gallery-preview/${singleGallery.id}`} disabled={true} style={{width: 300}} />&nbsp;
+                  <button className="btn btn-info" type="button" 
+                    onClick={() => {navigator.clipboard.writeText(`http://localhost:3000/gallery-preview/${singleGallery.id}`)}} >Copy</button>
+                  
+                </div><br/><br/><br/><br/>
+                
+                
+                
+              </Col>
+              <Col>
+                {photos.map(photo => 
+                        <img style={{width: 200, height: 200}} className="card-img" src={photo.imageUrl} alt="single" key={photo.id}></img>
+                      
+                  )}
+              </Col>
+            </Row>
+          </div>
+          <div className="card-footer">
+                  <Link to={`/galleries/${singleGallery.id}/edit`} className="btn btn-primary">
+                    Edit Gallery
+                  </Link>&nbsp;&nbsp;&nbsp;
+                  <button type="button" onClick={() => handleDeleteGallery(singleGallery.id)} className="btn btn-danger">Remove Gallery</button>&nbsp;&nbsp;&nbsp;
+                  <a href={`http://localhost:3000/gallery-preview/${singleGallery.id}`} target="_blank" className="btn btn-success">Preview</a>
+          </div>
+        </div>
     </>
     );
 }

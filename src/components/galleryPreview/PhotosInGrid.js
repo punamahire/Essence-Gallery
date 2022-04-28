@@ -1,50 +1,28 @@
 import React from 'react';
-import bootstrap from 'bootstrap';
-import "./PhotosInGrid.css"
+import { Row } from 'react-bootstrap';
 
-export const PhotosInGrid = ({ coulmns, photosInGallery }) => {   
+export const PhotosInGrid = ({ columns, photosInGallery }) => {   
 
   return (
     <>
         <div className="container">
-            {coulmns === 3 ?
-                <div className="row">
+            {columns === 3 ?
+                <Row>
                     {photosInGallery.map(photo => {
-                        <div className="col-sm-3">
-                            <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                        </div>
+                        return (<div className="col-sm-4">
+                            <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="3 column grid"></img>
+                        </div>)
                         })
                     }
-                    {/* <div className="col-sm-3">
-                        <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div>
-                    <div className="col-sm-3">
-                        <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div>
-                    <div className="col-sm-3">
-                        <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div> */}
-                </div>
+                </Row>
             :
                 <div className="row">
                     {photosInGallery.map(photo => {
-                        <div className="col-sm-4">
-                            <img style={{width: 300}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                        </div>
+                        return (<div className="col-sm-3" key={photo.id}>
+                            <img className="card-img" src={photo.imageUrl} alt='4 column grid' />
+                        </div>)
                         })
                     }
-                    {/* <div className="col-sm-4">
-                        <img style={{width: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div>
-                    <div className="col-sm-4">
-                        <img style={{width: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div>
-                    <div className="col-sm-4">
-                        <img style={{width: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div>
-                    <div className="col-sm-4">
-                        <img style={{width: 200}} className="card-img" src={photo.imageUrl} alt="my photo"></img>
-                    </div> */}
                 </div>
             }
         </div>

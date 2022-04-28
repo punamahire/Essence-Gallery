@@ -5,6 +5,7 @@ import { Register } from "./auth/Register"
 import { GalleryList } from "./gallery/GalleryList"
 import { GalleryAddForm } from "./gallery/GalleryAddForm"
 import { GalleryEditForm } from "./gallery/GalleryEditForm"
+import { GalleryPreview } from "./galleryPreview/GalleryPreview"
 
 export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticated}) => {
     const PrivateOutlet = () => {
@@ -21,6 +22,7 @@ export const ApplicationViews = ({setAuthUser, isAuthenticated, setIsAuthenticat
         <Route path="/galleries/:galleryId/edit" element={<GalleryEditForm />} /> 
         
       </Route>
+      <Route path="/gallery-preview/:galleryId" element={<GalleryPreview />} />
       <Route path="/login" element={<Login setAuthUser={setAuthUser}/> }/>
       <Route path="/register" element={<Register/>}/>
     </Routes>
