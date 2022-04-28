@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { Navbar, Container, Nav } from "react-bootstrap"
 //import "bootstrap/dist/css/bootstrap.min.css"
 
 
@@ -11,28 +12,29 @@ export const NavBar = (props) => {
   }
     
   return (
-    <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
+    <>
+      <Navbar bg="dark" variant="dark">
+        <Container>
+        <Navbar.Brand>Essence Gallery</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link href="/galleries">Galleries</Nav.Link>
+          {props.isAuthenticated && <Nav.Link href="#" onClick={props.clearUser}>Logout</Nav.Link>}
+        </Nav>
+        {props.isAuthenticated && <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>
+            { currentUserName && <p>Hello, {currentUserName}</p> }
+          </Navbar.Text>
+        </Navbar.Collapse>}
+        </Container>
+      </Navbar>
+      
+      {/* <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
 
       <ul className="nav nav-pills nav-fill">
         <li className="nav-item">
           <Link className="nav-link" to="/galleries">Galleries</Link>
         </li>
-        {/*
-        <li className="nav-item">
-          <Link className="nav-link" to="/articles">Articles</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/friends">Friends</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/messages">Messages</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/tasks">Tasks</Link>
-        </li>
-        <li className="nav-item">
-          <Link className="nav-link" to="/events">Events</Link>
-        </li> */}
+        
         {props.isAuthenticated && <li className="nav-item">
           <Link className="nav-link" onClick={props.clearUser} to="/">Logout</Link>
         </li>}
@@ -40,7 +42,8 @@ export const NavBar = (props) => {
         <div>
           { currentUserName && <p>Hello, {currentUserName}</p> }         
         </div>
-    </nav>
+    </nav> */}
+    </>
   )
 }
 

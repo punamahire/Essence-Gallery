@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
+import { Container } from "react-bootstrap"
 import "./EssenceGallery.css"
 
 export const EssenceGallery = () => {
@@ -19,8 +20,10 @@ export const EssenceGallery = () => {
 return (
   <>
   <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated}/>
-  <ApplicationViews setAuthUser={setAuthUser}
+  <Container>
+    <ApplicationViews setAuthUser={setAuthUser}
                 isAuthenticated={isAuthenticated}
                 setIsAuthenticated={setIsAuthenticated}/>
+  </Container>
   </>
 )}

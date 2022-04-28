@@ -1,3 +1,5 @@
+import { settings } from "../Settings"
+
 const remoteURL = "http://localhost:8088"
 
 export const getAllLayouts = () => {

@@ -11,16 +11,92 @@
       "id": 2
     }
   ],
-  "galleries": [],
-  "photos": [],
-  "layouts": [
+  "galleries": [
     {
-        "name": "3-column-grid",
-        "id": 1
+      "name": "MyGallery",
+      "date": "2022-04-26T09:43",
+      "userId": 1,
+      "layoutId": "2",
+      "id": 2
     },
     {
-        "name": "4-column-grid",
-        "id": 2   
+      "name": "Beautiful ",
+      "date": "2022-04-21T13:03",
+      "userId": 1,
+      "layoutId": "1",
+      "id": 4
+    },
+    {
+      "name": "Landscapes",
+      "date": "2022-04-20T13:20",
+      "userId": 1,
+      "layoutId": "1",
+      "id": 5
+    }
+  ],
+  "photos": [
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1650984633/essence/cvlcqhagx5inovrhf2zf.jpg",
+      "userId": 1,
+      "galleryId": 2,
+      "id": 2
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1650984638/essence/atpl93wtmcltldpsjxah.jpg",
+      "userId": 1,
+      "galleryId": 2,
+      "id": 3
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1650996234/essence/zuit9dkyqjdimxhj8lbn.jpg",
+      "userId": 1,
+      "id": 6
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651090613/essence/pgjxzwy7zjwj42hozewf.jpg",
+      "galleryId": 4,
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651090697/essence/sksojr6qp8h504yqhjar.jpg",
+      "galleryId": 5,
+      "userId": 1,
+      "id": 14
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651090703/essence/aufyz2rsmbvx4oq8izpf.jpg",
+      "galleryId": 5,
+      "userId": 1,
+      "id": 15
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651090710/essence/itqamyxo90fsakhvpywt.jpg",
+      "galleryId": 5,
+      "userId": 1,
+      "id": 16
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651090913/essence/gqblsx4jsjqruvwtg8j3.jpg",
+      "galleryId": 2,
+      "userId": 1,
+      "id": 17
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651091535/essence/hb5lcyxuufirpnvbtny0.jpg",
+      "galleryId": 5,
+      "userId": 1,
+      "id": 18
+    }
+  ],
+  "layouts": [
+    {
+      "name": "3-column-grid",
+      "id": 1
+    },
+    {
+      "name": "4-column-grid",
+      "id": 2
     }
   ]
 }

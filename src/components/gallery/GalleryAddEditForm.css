@@ -1,0 +1,39 @@
+
+.edit-form, .add-form {
+  margin-top: 1.5em;
+}
+
+.galleryForm__title {
+  margin-bottom: 0.5em;
+}
+
+.active {
+  border: 2px solid rebeccapurple;
+}
+
+.photos-div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-div {
+  flex: 1 0;
+  width: 100%;
+}
+
+.image-div > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.gallery-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.buttons-div {
+  display: flex;
+  justify-content: space-evenly;  
+  margin-top: 1em;
+}
+

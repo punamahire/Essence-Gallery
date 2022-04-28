@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addGallery } from '../../modules/GalleryManager';
 import { getAllLayouts } from '../../modules/LayoutManager';
-import './GalleryAddEditForm.css'
+import './GalleryAddEditForm.css';
 
 export const GalleryAddForm = () => {
 
@@ -39,8 +39,8 @@ export const GalleryAddForm = () => {
 	const handleClickSaveGallery = (event) => {
 		event.preventDefault()
 
-        const userObj = JSON.parse(sessionStorage.getItem("gallery_user"))
-		galleryObj.userId = userObj.id;
+        const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
+		galleryObj.userId = activeUser.id;
 
 		if (galleryObj.name === "" || galleryObj.date === "" || galleryObj.layoutId === 0) {
 			window.alert("Please enter name, date and layout for the gallery")
@@ -49,28 +49,30 @@ export const GalleryAddForm = () => {
 			//once complete, change the url and display the Gallery list
 			setIsLoading(true);
 			addGallery(galleryObj)
-				.then(() => navigate("/galleries"))
+				.then(addedGallery => {
+					navigate(`/galleries/${addedGallery.id}/edit`)
+				});
 		}
 	}   
 
 	return (
-		<form className="galleryForm">
+		<form className="col-md-6 add-form">
 			<h2 className="galleryForm__title">New Gallery</h2>
 			<fieldset>
 				<div className="form-group">
-					<label htmlFor="name">Gallery name:</label>
+					<label htmlFor="name">Gallery name</label>
 					<input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Gallery name" value={galleryObj.name} />
 				</div>
 			</fieldset>
 			<fieldset>
 				<div className="form-group">
-					<label htmlFor="date">Gallery date:</label>
-					<input type="datetime-local" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={galleryObj.date} />
+					<label htmlFor="date">Gallery date</label>
+					<input type="date" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={galleryObj.date} />
 				</div>
 			</fieldset>
             <fieldset>
 				<div className="form-group">
-					<label htmlFor="layout">Assign to layout: </label>
+					<label htmlFor="layout">Select a layout </label>
 					<select value={galleryObj.layoutId} name="layoutId" id="layoutId" onChange={handleControlledInputChange} className="form-control" >
 						<option value="0">Select a layout</option>
 						{layouts.map(l => (
@@ -81,18 +83,19 @@ export const GalleryAddForm = () => {
 					</select>
 				</div>
 			</fieldset>
-			<div className="galleryFormButtons">
+
+			<div className="buttons-div">
 				<button type="button" className="btn btn-primary"
 					disabled={isLoading}
 					onClick={handleClickSaveGallery}>
 					Save Gallery
-			</button>
-			<button 
-				type="button"
-				className="btn btn-primary"
-				onClick={() => {navigate("/galleries")}}>
-				Cancel
-			</button>
+				</button>
+				<button 
+					type="button"
+					className="btn btn-primary"
+					onClick={() => {navigate("/galleries")}}>
+					Cancel
+				</button>
 			</div>
 		</form>
 	)

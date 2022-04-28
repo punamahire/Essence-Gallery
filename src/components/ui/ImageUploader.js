@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { addPhoto } from "../../modules/PhotoManager";
 import { settings } from "../../Settings";
+import './ImageUploader.css'
 
 export function ImageUploader({ gallery, updatePhotos }) {
 
@@ -8,7 +9,6 @@ export function ImageUploader({ gallery, updatePhotos }) {
 
   const dropbox = useRef(null);
   const fileSelect = useRef(null);
-  const [image, setImage] = useState('');
   const [progress, setProgress] = useState(0);
 
   async function handleImageUpload() {
@@ -28,47 +28,49 @@ export function ImageUploader({ gallery, updatePhotos }) {
 
   // upload photo to cloudinary
   function uploadFile(file) {
-    const url = `${settings.apiBaseURL}/upload`; 
-    const xhr = new XMLHttpRequest();
-    const fd = new FormData();
-    xhr.open("POST", url, true);
-    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
 
-    // Update progress (can be used to show progress indicator)
-    xhr.upload.addEventListener("progress", (e) => {
-      setProgress(Math.round((e.loaded * 100.0) / e.total));
-      console.log(Math.round((e.loaded * 100.0) / e.total));
-    });
+    console.log("inside uploadImage... file", file)
 
-    xhr.onreadystatechange = (e) => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        const response = JSON.parse(xhr.responseText);
-      
-        setImage(response.secure_url);
-        console.log(response.secure_url);
+    const url = `${settings.apiBaseURL}/image/upload`;
 
-        const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
-        // add photo to database
-        console.log("galleryId", gallery.id)
-        const photo = {
-                        imageUrl: response.secure_url,
-                        galleryId: gallery.id,
-                        userId: activeUser.id
-                      };       
-                    
-        addPhoto(photo).then(addedPhoto => {
-          console.log("added photo to database", addedPhoto);
-          updatePhotos();
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", settings.uploadPreset); 
+  
+      fetch(url, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log("data from fetch", data)
+          if (data.secure_url !== '') {
+            console.log("secure_url", data.secure_url)
+
+            const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
+            // add photo to database
+            console.log("galleryId", gallery.id)
+            const photo = {
+                            imageUrl: data.secure_url,
+                            galleryId: gallery.id,
+                            userId: activeUser.id
+                          };       
+                        
+            addPhoto(photo).then(addedPhoto => {
+              console.log("added photo to database", addedPhoto);
+              updatePhotos();
+            })
+
+          }
         })
+        .catch(err => console.error(err));  
 
-      }
-    };
+    // // Update progress (can be used to show progress indicator)
+    // xhr.upload.addEventListener("progress", (e) => {
+    //   setProgress(Math.round((e.loaded * 100.0) / e.total));
+    //   console.log(Math.round((e.loaded * 100.0) / e.total));
+    // });
 
-    fd.append("upload_preset", settings.uploadPreset);
-    fd.append("tags", "browser_upload");
-    fd.append("file", file);
-    fd.append("folder", "nature");
-    xhr.send(fd);
   }
 
   useEffect(() => {
@@ -96,27 +98,27 @@ export function ImageUploader({ gallery, updatePhotos }) {
     dropbox.current.addEventListener("dragover", dragOver, false);
     dropbox.current.addEventListener("drop", drop, false);
 
-    // return () => {
-    //   // dropbox.current.removeEventListener("dragenter", dragEnter);
-    //   // dropbox.current.removeEventListener("dragover", dragOver);
-    //   // dropbox.current.removeEventListener("drop", drop);
-    // };
+    return () => {
+      dropbox.current?.removeEventListener("dragenter", dragEnter);
+      dropbox.current?.removeEventListener("dragover", dragOver);
+      dropbox.current?.removeEventListener("drop", drop);
+    };
   }, []);
 
 
   return (
     <div ref={dropbox}>
         <div
-          className="bg-gray-200 border-4 border-dashed border-gray-400 rounded-lg"
-          style={{ height: 400, width: 600 }}
+          className="dropbox-div"
+          style={{ height: 200, width: 630 }}
           >
           <section className="flex justify-center items-center h-full">
             {progress === 0 ? (
-              <div className="text-gray-700 text-center">
-                <div>Drag and Drop assets here</div>
-                <div className="my-2">or</div>
+              <div className="text-secondary text-center">
+                <div>Drag and drop images here</div>
+                <div>or</div>
                 <button
-                  className="bg-blue-600 hover:bg-blue-800 text-white font-bold px-4 py-2 rounded block m-auto"
+                  className="btn btn-info"
                   onClick={handleImageUpload}
                   type="button"
                 >
