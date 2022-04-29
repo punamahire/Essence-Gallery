@@ -1,10 +1,10 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { Navbar, Container, Nav } from "react-bootstrap"
-//import "bootstrap/dist/css/bootstrap.min.css"
-
 
 export const NavBar = (props) => {
+  const location = useLocation();
+
   let tmp = JSON.parse(sessionStorage.getItem("gallery_user"));
   let currentUserName = null
   if (tmp) {
@@ -15,16 +15,22 @@ export const NavBar = (props) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-        <Navbar.Brand>Essence Gallery</Navbar.Brand>
-        <Nav className="me-auto">
-          <Nav.Link href="/galleries">Galleries</Nav.Link>
-          {props.isAuthenticated && <Nav.Link href="#" onClick={props.clearUser}>Logout</Nav.Link>}
-        </Nav>
-        {props.isAuthenticated && <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>
-            { currentUserName && <p>Hello, {currentUserName}</p> }
-          </Navbar.Text>
-        </Navbar.Collapse>}
+          <Navbar.Brand>Essence Gallery</Navbar.Brand>
+          
+          <Nav className="me-auto">
+            {/* for gallery-preview page do not show the galleries link in the nav-bar */}
+            {!(location.pathname.includes('gallery-preview')) &&
+              <Nav.Link href="/galleries">Galleries</Nav.Link>
+            }
+            {props.isAuthenticated && <Nav.Link href="#" onClick={props.clearUser}>Logout</Nav.Link>}
+          </Nav>
+
+          {props.isAuthenticated && 
+          <Navbar.Collapse className="justify-content-end">
+            <Navbar.Text>
+              { currentUserName && <p>Hello, {currentUserName}</p> }
+            </Navbar.Text>
+          </Navbar.Collapse>}
         </Container>
       </Navbar>
       
@@ -42,7 +48,7 @@ export const NavBar = (props) => {
         <div>
           { currentUserName && <p>Hello, {currentUserName}</p> }         
         </div>
-    </nav> */}
+      </nav> */}
     </>
   )
 }

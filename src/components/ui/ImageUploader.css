@@ -1,12 +1,11 @@
 .dropbox-div {
-    margin: .5rem;
+    margin: .25rem;
     padding: 1rem;
-    border: 2px dashed rgb(7, 147, 240);
+    border: 2px dashed grey;
     border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1rem;
     font-weight: bold;
-    cursor: pointer;
 }
