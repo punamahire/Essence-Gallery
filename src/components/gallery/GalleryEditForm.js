@@ -3,10 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getGalleryById, updateGallery } from '../../modules/GalleryManager'
 import { getAllLayouts } from "../../modules/LayoutManager";
 import { getPhotosByGalleryId, deletePhoto } from "../../modules/PhotoManager";
-import { ImageUploader } from "../ui/ImageUploader";
+import { ImageUploader } from "../ui/ImageUploader"
 import { Photos } from "../photo/Photos";
 import "./GalleryAddEditForm.css"
-
 
 export const GalleryEditForm = () => {
   const [photos, setPhotos] = useState([]);
@@ -18,7 +17,6 @@ export const GalleryEditForm = () => {
   const navigate = useNavigate();
 
   const getPhotosFromGallery = () => {
-    console.log('Getting photos from gallery');
     // After the data comes back from the API, we
     // use the setPhotos function to update state
     return getPhotosByGalleryId(galleryId).then(photosFromAPI => {
@@ -61,7 +59,6 @@ export const GalleryEditForm = () => {
 
   useEffect(() => {
 
-    console.log("inside Edit form useEffect")
     //load layout data and setState
     getAllLayouts().then(layoutsFromAPI => {
       setLayouts(layoutsFromAPI)
@@ -90,7 +87,7 @@ export const GalleryEditForm = () => {
               className="form-control"
               onChange={handleFieldChange}
               id="name"
-              value={gallery.name}
+              defaultValue={gallery.name}
             />
           </div>
         </fieldset>
@@ -104,14 +101,14 @@ export const GalleryEditForm = () => {
               className="form-control"
               onChange={handleFieldChange}
               id="date"
-              value={gallery.date}
+              defaultValue={gallery.date}
             />
           </div>
         </fieldset>
 
         <fieldset>
           <div>
-            <label htmlFor="layout">Select a layout </label>
+            <label htmlFor="layout">Layout </label>
             <select value={gallery.layoutId} name="layout" id="layoutId" onChange={handleFieldChange} className="form-control" >
               <option>Select a layout</option>
               {layouts.map(l => (

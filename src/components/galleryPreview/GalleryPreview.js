@@ -3,6 +3,7 @@ import { getPhotosByGalleryId } from "../../modules/PhotoManager";
 import { getGalleryById } from '../../modules/GalleryManager'
 import { PhotosInGrid } from "./PhotosInGrid";
 import { useParams } from "react-router-dom";
+import { PhotosInMasonry } from "./PhotosInMasonry";
 
 export const GalleryPreview = () => {
   const { galleryId } = useParams();
@@ -23,7 +24,7 @@ export const GalleryPreview = () => {
     getGalleryById(galleryId)
       .then(gallery => {
         setGallery(gallery);
-        getPhotosFromGallery();
+        getPhotosFromGallery(gallery.id);
         if (parseInt(gallery.layoutId) === 1) {
           setNumOfColumns(3);
         } else if (parseInt(gallery.layoutId) === 2) {
@@ -35,20 +36,30 @@ export const GalleryPreview = () => {
   return (
     <div className="container">
       <div style={{padding: '10px'}}>
-        <h3>Gallery Name: 
+        <h3>Gallery: 
           <span className="card-galleryname">
-            {gallery.name}
+            {` ${gallery.name}`}
           </span>
         </h3>
         <h5>Date: {gallery.date}</h5>
       </div>
-
-      <div>
-        <PhotosInGrid
-          columns={numOfColumns}
-          photosInGallery={photos}
-        />
-      </div>
+    
+      {(numOfColumns === 3 || numOfColumns === 4) &&
+        <div>
+          <PhotosInGrid
+            columns={numOfColumns}
+            photosInGallery={photos}
+          />
+        </div>
+      }
+      {parseInt(gallery.layoutId) === 3 && 
+        <div>
+          <PhotosInMasonry
+            galleryId={gallery.id}
+            photosInGallery={photos}
+          />
+        </div>
+      }
 
     </div>
   );

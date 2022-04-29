@@ -3,9 +3,7 @@ import { addPhoto } from "../../modules/PhotoManager";
 import { settings } from "../../Settings";
 import './ImageUploader.css'
 
-export function ImageUploader({ gallery, updatePhotos }) {
-
-  console.log("gallery object", gallery)
+export const ImageUploader = ({ gallery, updatePhotos }) => {
 
   const dropbox = useRef(null);
   const fileSelect = useRef(null);
@@ -17,19 +15,15 @@ export function ImageUploader({ gallery, updatePhotos }) {
     }
   }
 
-  function handleFiles(files) {
-    console.log("handleFiles");
-    console.log(files);
+  const handleFiles = (files) => {
+
     for (let i = 0; i < files.length; i++) {
-      console.log(files[i]);
       uploadFile(files[i]);
     }
   }
 
   // upload photo to cloudinary
   function uploadFile(file) {
-
-    console.log("inside uploadImage... file", file)
 
     const url = `${settings.apiBaseURL}/image/upload`;
 
@@ -43,13 +37,10 @@ export function ImageUploader({ gallery, updatePhotos }) {
       })
         .then(response => response.json())
         .then(data => {
-          console.log("data from fetch", data)
           if (data.secure_url !== '') {
-            console.log("secure_url", data.secure_url)
 
             const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
             // add photo to database
-            console.log("galleryId", gallery.id)
             const photo = {
                             imageUrl: data.secure_url,
                             galleryId: gallery.id,
@@ -57,7 +48,6 @@ export function ImageUploader({ gallery, updatePhotos }) {
                           };       
                         
             addPhoto(photo).then(addedPhoto => {
-              console.log("added photo to database", addedPhoto);
               updatePhotos();
             })
 

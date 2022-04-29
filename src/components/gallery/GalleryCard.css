@@ -1,5 +1,4 @@
-.card-elements {
-    display: flex;
-    flex-direction: column;
-}
 
+.input-btn-div {
+    display: flex;
+}

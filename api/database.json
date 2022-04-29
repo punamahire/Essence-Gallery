@@ -97,6 +97,10 @@
     {
       "name": "4-column-grid",
       "id": 2
+    },
+    {
+      "name": "masonry",
+      "id": 3
     }
   ]
 }

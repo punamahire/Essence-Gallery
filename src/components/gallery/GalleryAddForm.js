@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { addGallery } from '../../modules/GalleryManager';
-import { getAllLayouts } from '../../modules/LayoutManager';
+import { addLayout, getAllLayouts } from '../../modules/LayoutManager';
 import './GalleryAddEditForm.css';
 
 export const GalleryAddForm = () => {
@@ -61,18 +61,18 @@ export const GalleryAddForm = () => {
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="name">Gallery name</label>
-					<input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Gallery name" value={galleryObj.name} />
+					<input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter gallery name" value={galleryObj.name} />
 				</div>
 			</fieldset>
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Gallery date</label>
-					<input type="date" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Event date" value={galleryObj.date} />
+					<input type="date" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter gallery date" value={galleryObj.date} />
 				</div>
 			</fieldset>
             <fieldset>
 				<div className="form-group">
-					<label htmlFor="layout">Select a layout </label>
+					<label htmlFor="layout">Layout </label>
 					<select value={galleryObj.layoutId} name="layoutId" id="layoutId" onChange={handleControlledInputChange} className="form-control" >
 						<option value="0">Select a layout</option>
 						{layouts.map(l => (

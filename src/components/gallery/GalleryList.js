@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row, Col} from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { getAllGalleries, deleteGallery } from '../../modules/GalleryManager';
 import { deletePhoto, getPhotosByGalleryId } from '../../modules/PhotoManager';
@@ -21,21 +21,21 @@ export const GalleryList = () => {
 
   const handleDeleteGallery = id => {
 
+
     // first, delete all the photos in the gallery
     getPhotosByGalleryId(id).then(photosFromAPI => {
 
       photosFromAPI.map(photo => {
         deletePhoto(photo.id)
         .then(() => {
-          console.log("deleted photo upon gallery delete")
         });
       })
       
-    });
-
-    // Next, delete the gallery
-    deleteGallery(id)
-    .then(() => getAllGalleries().then(setGalleries));
+      // Next, delete the gallery
+      deleteGallery(id)
+      .then(() => getAllGalleries().then(setGalleries));
+      });
+    
   };
 
   // got the galleries from the API on the component's first render

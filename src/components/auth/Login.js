@@ -30,7 +30,6 @@ export const Login = ({setAuthUser}) => {
 				// The user id is saved under the key gallery_user in session Storage. Change below if needed!
 				setAuthUser(exists);
 				navigate("/galleries");
-				console.log(exists)
 			} else {
 				setExistDialog(true);
 			}

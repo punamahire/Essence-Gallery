@@ -18,8 +18,14 @@ export const getAllPhotos = () => {
 }
 
 export const getPhotosByGalleryId = (galleryId, limit=0) => {
-    return fetch(`${remoteURL}/photos?galleryId=${galleryId}${limit !== 0 && '&_limit='+limit }`)
-    .then(res => res.json())
+
+    if (limit !== 0) {
+        return fetch(`${remoteURL}/photos?galleryId=${galleryId}${'&_limit='+limit}`)
+            .then(res => res.json())    
+    } else {
+        return fetch(`${remoteURL}/photos?galleryId=${galleryId}`)
+            .then(res => res.json())
+    }
 }
 
 export const deletePhoto = id => {
