@@ -1,0 +1,14 @@
+.photo-div {
+    position: relative;   
+}
+
+.photo-div .photo-close-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    z-index: 100;
+}
+
+.photo-close-btn {
+    text-align: center;;
+}
