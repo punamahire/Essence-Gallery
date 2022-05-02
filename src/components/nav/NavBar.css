@@ -1,0 +1,9 @@
+@font-face {
+    font-family: myFirstFont;
+    src:url("/Users/punam/workspace/essence-gallery/public/BrittanySignature.ttf");
+}
+
+.brittany{
+    font-family: myFirstFont;
+    font-size: 2em !important;
+}

@@ -14,14 +14,17 @@ export const addPhoto = newPhoto => {
 
 export const getAllPhotos = () => {
     return fetch(`${remoteURL}/photos`)
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
-export const getPhotosByGalleryId = (galleryId, limit=0) => {
+export const getPhotosByGalleryId = (galleryId, limit = 0) => {
 
+    // on each GalleryCard, display only 3 images from that gallery.
+    // Else, when getPhotosByGalleryId() is called with NO limit 
+    // parameter, fetch all the photos from that gallery.  
     if (limit !== 0) {
-        return fetch(`${remoteURL}/photos?galleryId=${galleryId}${'&_limit='+limit}`)
-            .then(res => res.json())    
+        return fetch(`${remoteURL}/photos?galleryId=${galleryId}${'&_limit=' + limit}`)
+            .then(res => res.json())
     } else {
         return fetch(`${remoteURL}/photos?galleryId=${galleryId}`)
             .then(res => res.json())
@@ -30,6 +33,6 @@ export const getPhotosByGalleryId = (galleryId, limit=0) => {
 
 export const deletePhoto = id => {
     return fetch(`${remoteURL}/photos/${id}`, {
-      method: "DELETE"
+        method: "DELETE"
     }).then(result => result.json())
 }

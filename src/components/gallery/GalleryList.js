@@ -6,7 +6,7 @@ import { deletePhoto, getPhotosByGalleryId } from '../../modules/PhotoManager';
 import { GalleryCard } from './GallerCard';
 import './GalleryList.css'
 
-export const GalleryList = () => {   
+export const GalleryList = () => {
 
   const [galleries, setGalleries] = useState([]);
   const navigate = useNavigate();
@@ -21,21 +21,21 @@ export const GalleryList = () => {
 
   const handleDeleteGallery = id => {
 
-
     // first, delete all the photos in the gallery
     getPhotosByGalleryId(id).then(photosFromAPI => {
 
       photosFromAPI.map(photo => {
         deletePhoto(photo.id)
-        .then(() => {
-        });
+          .then(() => {
+          });
       })
-      
-      // Next, delete the gallery
+
+      // Next, delete the gallery and update the state
+      // with the existing galleries
       deleteGallery(id)
-      .then(() => getAllGalleries().then(setGalleries));
-      });
-    
+        .then(() => getAllGalleries().then(setGalleries));
+    });
+
   };
 
   // got the galleries from the API on the component's first render
@@ -44,27 +44,34 @@ export const GalleryList = () => {
   }, []);
 
 
-  // Use .map() to "loop over" the Galleries array to show a list of Gallery 
+  // Use .map() to "loop over" the galleries array to show a list of gallery 
   return (
-  <>
-   <Container className="gal-list-container">
-      <section className="section-content">
+    <>
+      <Container className="gal-list-container">
+        <section className="section-content">
           <h1>Your galleries</h1>
-          <button type="button" className="btn btn-primary"
-              onClick={() => {navigate("/galleries/create")}}>
+          <div className="btn-and-search">
+            <button type="button" className="btn btn-primary"
+              onClick={() => { navigate("/galleries/create") }}>
               Add New Gallery
-          </button>
-      </section>
-      <div className="container-cards">
-        {galleries.map(gallery => 
-          <GalleryCard 
-            key={gallery.id} 
-            singleGallery={gallery} 
-            handleDeleteGallery={handleDeleteGallery} />
-        )}
-      </div>
-    </Container>
-  </>
+            </button>
+
+            {/* <div className="navbar-search">
+                <input className="search-input mr-sm-2" type="search" placeholder="Search photos" aria-label="Search"></input>
+                <button className="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+            </div> */}
+          </div>
+        </section>
+        <div className="container-cards">
+          {galleries.map(gallery =>
+            <GalleryCard
+              key={gallery.id}
+              singleGallery={gallery}
+              handleDeleteGallery={handleDeleteGallery} />
+          )}
+        </div>
+      </Container>
+    </>
 
   );
 }
