@@ -34,16 +34,16 @@ export const GalleryPreview = () => {
   }, []);
 
   return (
-    <div className="container">
-      <div style={{padding: '10px'}}>
-        <h3>Gallery: 
+    <div className="container bg-color">
+      <div style={{ padding: '10px' }}>
+        <h3>Gallery:
           <span className="card-galleryname">
             {` ${gallery.name}`}
           </span>
         </h3>
         <h5>Date: {gallery.date}</h5>
       </div>
-    
+
       {(numOfColumns === 3 || numOfColumns === 4) &&
         <div>
           <PhotosInGrid
@@ -52,7 +52,7 @@ export const GalleryPreview = () => {
           />
         </div>
       }
-      {parseInt(gallery.layoutId) === 3 && 
+      {parseInt(gallery.layoutId) === 3 &&
         <div>
           <PhotosInMasonry
             galleryId={gallery.id}

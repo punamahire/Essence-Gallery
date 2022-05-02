@@ -19,7 +19,7 @@ export const GalleryEditForm = () => {
   const getPhotosFromGallery = () => {
     // After the data comes back from the API, we
     // use the setPhotos function to update state
-    return getPhotosByGalleryId(galleryId).then(photosFromAPI => {
+    getPhotosByGalleryId(galleryId).then(photosFromAPI => {
       setPhotos(photosFromAPI)
     });
   };
@@ -39,9 +39,6 @@ export const GalleryEditForm = () => {
     evt.preventDefault()
     setIsLoading(true);
 
-    // default values for locationId and customerId
-    // if you already have these components/modules in place, you will need to include the correct information
-
     const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"))
 
     const editedGallery = {
@@ -59,7 +56,8 @@ export const GalleryEditForm = () => {
 
   useEffect(() => {
 
-    //load layout data and setState
+    //load layout data and setState. We need the layouts state
+    //to display options in the dropdown.
     getAllLayouts().then(layoutsFromAPI => {
       setLayouts(layoutsFromAPI)
     });
@@ -76,90 +74,79 @@ export const GalleryEditForm = () => {
   }, []);
 
   return (
-    <>
-      <form className="col-md-6 edit-form">
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="name">Gallery name</label>
-            <input
-              type="text"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="name"
-              defaultValue={gallery.name}
-            />
+    <section className="vh-100">
+      <div className="mask d-flex align-items-center h-100">
+        <div className="container h-100">
+          <div className="row d-flex justify-content-center align-items-center h-100">
+            <div className="col-12 col-md-9 col-lg-7 col-xl-10">
+              <div className="card" style={{ borderRadius: 15 }}>
+                <div className="card-body p-5">
+                  <h2 className="text-center mb-5">Update {gallery.name}</h2>
+                  <form className="form--login">
+                    <div className="form-outline mb-4">
+                      <label className="form-label label-font-size" htmlFor="name">Gallery Name</label>
+
+                      <input type="text" id="name" onChange={handleFieldChange} required autoFocus className="form-control" placeholder="Enter gallery name" defaultValue={gallery.name} />
+                    </div>
+
+                    <div className="form-outline mb-4">
+                      <label className="form-label label-font-size" htmlFor="date">Gallery date</label>
+                      <input type="date" id="date" onChange={handleFieldChange} required autoFocus className="form-control" placeholder="Enter gallery date" defaultValue={gallery.date} />
+                    </div>
+
+                    <div className="form-outline mb-4">
+                      <div className="form-group">
+                        <label className="form-label label-font-size" htmlFor="layout">Layout </label>
+                        <select value={gallery.layoutId} name="layout" id="layoutId" onChange={handleFieldChange} className="form-select" >
+                          <option>Select a layout</option>
+                          {layouts.map(l => (
+                            <option key={l.id} value={l.id}>
+                              {l.name}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                    </div>
+
+                    <div className="form-outline mb-4">
+                      <ImageUploader
+                        key={gallery.id}
+                        gallery={gallery}
+                        updatePhotos={getPhotosFromGallery}
+                      />
+                    </div>
+
+                    <div className="photos-div form-outline mb-4">
+                      {photos.map(photo =>
+                        <Photos
+                          key={photo.id}
+                          singlePhoto={photo}
+                          handleDeletePhoto={handleDeletePhoto}
+                        />
+                      )}
+                    </div>
+
+
+                    <div className="d-flex justify-content-center">
+                      <button type="button" className="btn btn-primary"
+                        disabled={isLoading}
+                        onClick={updateExistingGallery}>
+                        Save Gallery
+                      </button> &nbsp;&nbsp;&nbsp;
+                      <button
+                        type="button"
+                        className="btn btn-primary"
+                        onClick={() => { navigate("/galleries") }}>
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        </fieldset>
-
-        <fieldset>
-          <div className="form-group">
-            <label htmlFor="date">Gallery date</label>
-            <input
-              type="date"
-              required
-              className="form-control"
-              onChange={handleFieldChange}
-              id="date"
-              defaultValue={gallery.date}
-            />
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <div>
-            <label htmlFor="layout">Layout </label>
-            <select value={gallery.layoutId} name="layout" id="layoutId" onChange={handleFieldChange} className="form-control" >
-              <option>Select a layout</option>
-              {layouts.map(l => (
-                <option key={l.id} value={l.id}>
-                  {l.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <ImageUploader
-            key={gallery.id}
-            gallery={gallery}
-            updatePhotos={getPhotosFromGallery}
-          />
-        </fieldset>
-
-        <fieldset>
-          <div className="photos-div">
-
-            {photos.map(photo =>
-              <Photos
-                key={photo.id}
-                singlePhoto={photo}
-                handleDeletePhoto={handleDeletePhoto}
-              />
-            )}
-
-          </div>
-        </fieldset>
-
-        {/* Be sure to include userId. Get it from sessionStorage */}
-
-        <div className="buttons-div">
-          <button
-            type="button" disabled={isLoading}
-            onClick={updateExistingGallery}
-            className="btn btn-primary"
-          >Submit</button>
-        
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => { navigate("/galleries") }}>
-            Cancel
-          </button>
         </div>
-
-      </form>
-    </>
+      </div>
+    </section>
   );
 }

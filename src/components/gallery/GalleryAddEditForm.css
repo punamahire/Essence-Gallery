@@ -8,7 +8,7 @@
 }
 
 .active {
-  border: 2px solid rebeccapurple;
+  border-bottom: 1px solid #FFF;
 }
 
 .photos-div {
@@ -41,3 +41,6 @@
   margin-top: 1em;
 }
 
+.vh-80 {
+  height: 60vh!important;
+}
