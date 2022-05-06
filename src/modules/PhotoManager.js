@@ -31,8 +31,38 @@ export const getPhotosByGalleryId = (galleryId, limit = 0) => {
     }
 }
 
+export const getPhotoById = (photoId) => {
+    return fetch(`${remoteURL}/photos/${photoId}`)
+    .then(res => res.json())
+}
+
 export const deletePhoto = id => {
     return fetch(`${remoteURL}/photos/${id}`, {
         method: "DELETE"
     }).then(result => result.json())
+}
+
+export const getPhotosWithKeywords = (galleryId, keywords) => {
+    return fetch(`${remoteURL}/photos?galleryId=${galleryId}&q=${keywords}`)
+        .then(res => res.json())
+}
+
+export const getRandomPhoto = () => {
+    return fetch(`${remoteURL}/photos`)
+        .then(result => result.json())
+        .then(photos => {
+            const randomIndex = Math.floor(Math.random() * photos.length);
+            const randomPhoto = photos[randomIndex];
+            return randomPhoto;
+        });
+}
+
+export const updatePhoto = (editedPhoto) => {
+    return fetch(`${remoteURL}/photos/${editedPhoto.id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(editedPhoto)
+    }).then(data => data.json());
 }

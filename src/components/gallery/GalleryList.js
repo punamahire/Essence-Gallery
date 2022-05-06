@@ -55,11 +55,6 @@ export const GalleryList = () => {
               onClick={() => { navigate("/galleries/create") }}>
               Add New Gallery
             </button>
-
-            {/* <div className="navbar-search">
-                <input className="search-input mr-sm-2" type="search" placeholder="Search photos" aria-label="Search"></input>
-                <button className="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-            </div> */}
           </div>
         </section>
         <div className="container-cards">

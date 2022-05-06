@@ -6,3 +6,6 @@ strong {
     background-color: #f7a88b;
 }
 
+::-webkit-scrollbar {
+    display: none;
+  }

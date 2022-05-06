@@ -21,7 +21,7 @@ export const EssenceGallery = () => {
   return (
     <>
       <NavBar clearUser={clearUser} isAuthenticated={isAuthenticated} />
-      <Container className="bg-color-container vh-100">
+      <Container className="bg-color-container">
         <ApplicationViews setAuthUser={setAuthUser}
           isAuthenticated={isAuthenticated}
           setIsAuthenticated={setIsAuthenticated} />

@@ -11,7 +11,7 @@ export const PhotosInMasonry = ({ galleryId, photosInGallery }) => {
   };
 
   return (
-    <div className="page">
+    <div className="vh-100 overflow-auto">
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"

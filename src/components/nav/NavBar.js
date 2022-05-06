@@ -26,6 +26,7 @@ export const NavBar = (props) => {
             <Nav className="me-auto">
               {/* React conditional class aplication */}
               <Nav.Link href="/galleries" className={`${location.pathname.includes('galleries') ? "active" : ''}`} >Galleries</Nav.Link>
+              {/* <Nav.Link href="/photos" className={`${location.pathname.includes('photos') ? "active" : ''}`} >Photos</Nav.Link> */}
               <Nav.Link href="/login" onClick={props.clearUser}>Logout</Nav.Link>
             </Nav>
           }
