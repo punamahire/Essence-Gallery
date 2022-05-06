@@ -63,6 +63,13 @@
       "userId": 1,
       "layoutId": "1",
       "id": 9
+    },
+    {
+      "name": "Planes",
+      "date": "2022-05-06",
+      "userId": 2,
+      "layoutId": "2",
+      "id": 10
     }
   ],
   "photos": [
@@ -340,6 +347,108 @@
       "galleryId": 9,
       "userId": 1,
       "id": 60
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3375_nsnpjf.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 61
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2226_asxi4s.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 62
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604__bggrmi.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 63
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2251_tzakm0.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 64
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2252_xkkdly.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 65
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3483_bthckl.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 66
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813_1207_fokwdp.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 67
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813_1208_hunpdc.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 68
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813__qpsgad.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 69
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3524_azwoyf.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 70
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1219_i97cjl.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 71
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1209_z5elcv.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 72
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1492_mj31ms.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 73
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1227_c23bki.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 74
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1283_txh49y.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 75
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1487_gt1abh.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 76
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1505_nn21dr.jpg",
+      "galleryId": 10,
+      "userId": 2,
+      "id": 77
     }
   ],
   "layouts": [
