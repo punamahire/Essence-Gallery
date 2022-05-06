@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Row, Col } from 'react-bootstrap'
 import { getPhotosByGalleryId } from "../../modules/PhotoManager";
 import './GalleryCard.css'
@@ -8,13 +8,16 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
   const [photos, setPhotos] = useState([]);
   const [confirmDialog, setConfirmDialog] = useState(false);
+  const [showGalleryPics, setShowGalleryPics] = useState(false);
+  const navigate = useNavigate();
   let activeUser = JSON.parse(sessionStorage.getItem("gallery_user"));
 
   const getPhotosFromGallery = () => {
     // After the data comes back from the API, we
     // use the setPhotos function to update state
-    return getPhotosByGalleryId(singleGallery.id, 3).then(photosFromAPI => {
-      setPhotos(photosFromAPI)
+     getPhotosByGalleryId(singleGallery.id, 3).then(photosFromAPI => {
+      setPhotos(photosFromAPI);
+
     });
   };
 
@@ -25,6 +28,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
   return (
     <>
+  
       {(activeUser.id === singleGallery.userId) &&
 
         <div className="card" style={{ marginTop: '20px' }}>
@@ -40,7 +44,13 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
                   <button className="btn btn-info" type="button"
                     onClick={() => { navigator.clipboard.writeText(`http://localhost:3000/gallery-preview/${singleGallery.id}`) }} >Copy</button>
 
-                </div><br /><br /><br /><br />
+                </div><br></br>
+                <div>
+                  <Link to={`/galleries/${singleGallery.id}/photos`} className="btn btn-primary">
+                    Show gallery pics
+                  </Link>
+                </div>
+                <br/>
 
               </Col>
               <Col>

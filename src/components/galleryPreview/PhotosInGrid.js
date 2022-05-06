@@ -10,7 +10,7 @@ export const PhotosInGrid = ({ columns, photosInGallery }) => {
                 {columns === 3 ?
                     <Row>
                         {photosInGallery.map(photo => {
-                            return (<div className="col-sm-4">
+                            return (<div className="col-sm-4" key={photo.id}>
                                 <img style={{ width: 300 }} className="card-img" src={photo.imageUrl} alt="3 column grid"></img>
                             </div>)
                         })

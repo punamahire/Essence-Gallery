@@ -57,9 +57,9 @@ export const GalleryAddForm = () => {
   }
 
   return (
-    <section className="vh-80">
+    <section>
       <div className="mask d-flex align-items-center h-100">
-        <div className="container h-100">
+        <div className="container vh-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-12 col-md-9 col-lg-7 col-xl-10">
               <div className="card" style={{ borderRadius: 15 }}>

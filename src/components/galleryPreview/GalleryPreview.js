@@ -34,7 +34,7 @@ export const GalleryPreview = () => {
   }, []);
 
   return (
-    <div className="container bg-color">
+    <div className="container bg-color vh-100  overflow-auto">
       <div style={{ padding: '10px' }}>
         <h3>Gallery:
           <span className="card-galleryname">
@@ -60,7 +60,6 @@ export const GalleryPreview = () => {
           />
         </div>
       }
-
     </div>
   );
 }
