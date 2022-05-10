@@ -245,7 +245,7 @@
       "galleryId": 8,
       "userId": 2,
       "id": 100,
-      "keywords": "white,attitude,serious,eyes"
+      "keywords": "owl,black,white"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777255/essence/love_birds_ugb3vs.jpg",
@@ -374,13 +374,15 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778609/essence/CatchyEye_160604_2251_o479cf.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 129
+      "id": 129,
+      "keywords": "red,fast,small"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778611/essence/CatchyEye_160604_2252_jrqyz0.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 130
+      "id": 130,
+      "keywords": "red,small,smoke"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778615/essence/CatchyEye_160604_3375_xydnqy.jpg",
@@ -404,7 +406,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778624/essence/CatchyEye_160813__q00dwg.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 134
+      "id": 134,
+      "keywords": "panning,landing,black"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778626/essence/CatchyEye_160813_1207_qpqjni.jpg",
@@ -435,7 +438,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778654/essence/CatchyEye_160813_1227_nsbfnr.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 140
+      "id": 140,
+      "keywords": "straight up,blue,white"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778658/essence/CatchyEye_160813_1283_muaa5o.jpg",
@@ -453,7 +457,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778666/essence/CatchyEye_160813_1505_x2vzub.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 144
+      "id": 144,
+      "keywords": "chopper,red,fly"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:refresh/v1651779502/essence/flowers_ybtbzk.webp",
@@ -474,10 +479,11 @@
       "id": 153
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802081/essence/blossoms_v8vx0s.jpg",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:zorro/v1651802081/essence/blossoms_v8vx0s.jpg",
       "galleryId": 5,
       "userId": 1,
-      "id": 154
+      "id": 154,
+      "keywords": "pink,white,flower"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802084/essence/rainbow_nbc9a5.jpg",
