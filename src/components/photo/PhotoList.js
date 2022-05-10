@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useReducer } from 'react';
 import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
-import { getPhotosByGalleryId, updatePhoto, getPhotoById, getPhotosWithKeywords } from "../../modules/PhotoManager"
+import { getPhotosByGalleryId, updatePhoto, getPhotoById } from "../../modules/PhotoManager"
 import "./PhotoList.css"
 
 export const PhotoList = () => {
@@ -22,7 +22,7 @@ export const PhotoList = () => {
         // After the data comes back from the API, we
         // use the setGalleryPhotos function to update state
         return getPhotosByGalleryId(parseInt(galleryId)).then(photosFromAPI => {
-            setGalleryPhotos(photosFromAPI)
+            setGalleryPhotos(photosFromAPI);
         });
     };
 
@@ -52,82 +52,110 @@ export const PhotoList = () => {
 
     // search the photos for the keywords entered
     const handleSearchPhotos = () => {
-        console.log("inside handle search", keywordsToSearch);
 
         let searchResult = []
         galleryPhotos.map(photo => {
 
             if (photo.keywords?.match(new RegExp(keywordsToSearch.replace(' ', '|').replace(',', '|'), 'gi'))) {
-                console.log("keyword found");
                 searchResult.push(photo);
             }
         })
         setFoundPhotos(searchResult);
 
-        // getPhotosWithKeywords(galleryId, keywordsToSearch).then(foundPics => {
-        //     console.log("found pics", foundPics);
-        //     setFoundPhotos(foundPics);
-        // })
+        // no need to update the state here for keywordsToSearch as it will clear 
+        // the search input field. The user should see what keywords he searched for.
     }
 
-    // add the keyword to the photo and update it in the database
-    const handleAddKeywords = () => {
-        console.log("keywordsToAdd", keywordsToAdd)
-
-        // add keywords to the photo object and update it in the database 
-        const editedPhoto = {
-            imageUrl: photoSelected.imageUrl,
-            galleryId: photoSelected.galleryId,
-            userId: activeUser.id,
-            keywords: keywordsToAdd,
-            id: photoSelected.id
-        };
-        console.log("editedPhoto", editedPhoto)
-        updatePhoto(editedPhoto).then(updatedPhoto => {
-            console.log("updated photo", updatedPhoto);
-        })
-    }
-
-    // apply selected image filter and show image preview.
-    // apply the filter to the original photo from the 
-    // gallery only when the user confirms filter application.
+    // apply the selected image-filter and show filter-preview.
     const handleFilterPreview = (event) => {
-        console.log("inside show filter preview", event);
 
-        // filteredImage is a url of the photo with filter applied.
-        // show filter preview on the original photo.
-        if (filteredImage === "") {
-            console.log("showing filter preview", filteredImage)
-            setFilteredImage(photoSelected.imageUrl?.replace('/upload/', `/upload/e_art:${event.target.value}/`));
-        }
+        if (parseInt(event.target.value) !== 0) {
 
-        let previousFilter = "";
-        if (filteredImage) {
-            previousFilter = filteredImage.slice(':')[1];
-            // change filter preview when user selects another filter from dropdown.
-            if (previousFilter !== `${event.target.value}/`) {
-                console.log("applying new filter", previousFilter);
-                setFilteredImage(photoSelected.imageUrl?.replace('/upload/', `/upload/e_art:${event.target.value}/`));
+            // Show filter preview on the original-photo selected from gallery.
+            // filteredImage is a url of the selected photo with filter applied. It will
+            // be an empty string until user makes his first selection from the dropdown.
+            if (filteredImage === "") {
+
+                if (photoSelected.imageUrl.includes('e_art')) {
+
+                    // In the past, this photo was saved to the gallery with filter applied.
+                    let lastAppliedFilter = photoSelected.imageUrl.split('e_art:').pop().split('/v')[0];
+
+                    setFilteredImage(photoSelected.imageUrl?.replace(`/upload/e_art:${lastAppliedFilter}/`, `/upload/e_art:${event.target.value}/`));
+                } else {
+
+                    // Applying image filter to this photo for the very first time.
+                    setFilteredImage(photoSelected.imageUrl?.replace('/upload/', `/upload/e_art:${event.target.value}/`));
+                }
             }
+
+            // if we are here, the filteredImage will always have 'e_art' in it 
+            // because the user is trying different filters from the dropdown.
+            let previousFilter = "";
+            if (filteredImage) {
+
+                previousFilter = filteredImage.split('e_art:').pop().split('/v')[0];
+
+                if (previousFilter !== `${event.target.value}/`) {
+
+                    if (photoSelected.imageUrl.includes('e_art')) {
+                        // change the filter preview when user selects another filter from dropdown.
+                        setFilteredImage(photoSelected.imageUrl?.replace(`/upload/e_art:${previousFilter}/`, `/upload/e_art:${event.target.value}/`));
+                    } else {
+                        // trying different filters on this photo for the first time.
+                        setFilteredImage(photoSelected.imageUrl?.replace('/upload/', `/upload/e_art:${event.target.value}/`));
+                    }
+                }
+
+            }
+        } else {
+
+            // if the user accidently selects the 0th option from the dropdown
+            // prompt for selecting filter from the dropdown.
+            window.alert('Selected value is not an image filter. Please select another value.');
+
         }
     }
 
-    // apply image filter to the selected photo from the gallery.
-    // replace the original photo in the database with the filtered image.
-    const handleApplyFilter = (event) => {
-        console.log("inside apply filter", event);
+    const handleSaveForm = (event) => {
 
-        // filteredImage is the url of the image with filter applied
+        // add keywords to the photo only if user has entered keywords
+        // otherwise, keep the existing keywords.
+        let newKeywords = "";
+        if (keywordsToAdd !== "") {
+            newKeywords = keywordsToAdd;
+        } else {
+            newKeywords = photoSelected?.keywords;
+        }
+
+        // apply image filter to the photo selected.
+        // if no filter selected, keep original photo.
+        let newImageUrl = "";
+        if (filteredImage !== "") {
+            // filteredImage is the url of the image with filter applied
+            newImageUrl = filteredImage;
+        } else {
+            newImageUrl = photoSelected.imageUrl;
+        }
+
+        // add keywords to the photo object and update it in the database.
+        // replace the original photo in the database with the filtered image. 
         const editedPhoto = {
-            imageUrl: filteredImage,
+            imageUrl: newImageUrl,
             galleryId: photoSelected.galleryId,
             userId: activeUser.id,
-            keywords: photoSelected.keywords,
+            keywords: newKeywords,
             id: photoSelected.id
         };
-        console.log("editedPhoto", editedPhoto)
+
         updatePhoto(editedPhoto).then(updatedPhoto => {
-            console.log("updated photo", updatedPhoto);
+
+            // get the gallery photos from the API after adding keywords and image filter  
+            // to the selected photo, and update the component state (galleryPhotos)
+            getPhotosFromGallery();
+
+            // update the state to clear the input field
+            setKeywordsToAdd("");
         })
     }
 
@@ -143,75 +171,108 @@ export const PhotoList = () => {
 
                 <div className="search-div">
                     <input className="search-input mr-sm-2" type="search" placeholder="Search photos" aria-label="Search"
-                        id="keyword" onChange={(e) => handleControlledInputChange(e)} required autoFocus defaultValue={keywordsToSearch} />
+                        id="keyword" onChange={(e) => handleControlledInputChange(e)} required autoFocus value={keywordsToSearch} />
                     <button className="btn btn-success my-2 my-sm-0" type="submit"
                         onClick={() => handleSearchPhotos()}>Search</button>
                 </div>
-                <div className="allPhotos-div">
-                    {console.log("foundPhotos", foundPhotos)}
-                    {foundPhotos.length > 0 ?
-                        <Row>
-                            {foundPhotos.map(photo => {
-                                return (<div className="col-sm-3" key={photo.id}>
-                                    <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
-                                        src={photo.imageUrl} alt="3 column grid"
-                                        onClick={() => imageSelected(photo.id)}></img>
-                                </div>)
-                            })
-                            }
-                        </Row>
-                        :
-                        <Row>
-                            {galleryPhotos.map(photo => {
-                                return (<div className="col-sm-3" key={photo.id}>
-                                    <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
-                                        src={photo.imageUrl} alt="3 column grid"
-                                        onClick={() => imageSelected(photo.id)}></img>
-                                </div>)
-                            })
-                            }
-                        </Row>
-                    }
-                </div>
-                <div>
-                    <form>
-                        <label className="form-label label-font-size" htmlFor="newKeyword">Add keywords</label>
-                        <input type="text" id="newKeyword" onChange={(e) => handleNewKeywordInput(e)} required autoFocus
-                            className="form-control" placeholder="Enter keywords" defaultValue={keywordsToAdd} />
-                        <button className="btn btn-success my-2 my-sm-0" type="button"
-                            onClick={() => handleAddKeywords()}>Add</button><br></br>
+                <div className="photos-aside-div">
+                    <div className="allPhotos-div">
+                        {console.log("foundPhotos", foundPhotos)}
+                        {foundPhotos.length > 0 ?
+                            <Row>
+                                {foundPhotos.map(photo => {
+                                    return (<div className="col-sm-4" key={photo.id}>
+                                        <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
+                                            src={photo.imageUrl} alt="3 column grid"
+                                            onClick={() => imageSelected(photo.id)}></img>
+                                    </div>)
+                                })
+                                }
+                            </Row>
+                            :
+                            <Row>
+                                {galleryPhotos.map(photo => {
+                                    return (<div className="col-sm-4" key={photo.id}>
+                                        <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
+                                            src={photo.imageUrl} alt="3 column grid"
+                                            onClick={() => imageSelected(photo.id)}></img>
+                                    </div>)
+                                })
+                                }
+                            </Row>
+                        }
 
-                        <label className="form-label label-font-size" htmlFor="layout">Image filters </label>
-                        <select name="imageTrans" id="imageTrans" onChange={(e) => handleFilterPreview(e)} className="form-select" >
-                            <option value="0">Select filter</option>
-                            <option key='al_dente' value='al_dente'>al_dente</option>
-                            <option key='athena' value='athena'>athena</option>
-                            <option key='audrey' value='audrey'>audrey</option>
-                            <option key='aurora' value='aurora'>aurora</option>
-                            <option key='daguerre' value='daguerre'>daguerre</option>
-                            <option key='eucalyptus' value='eucalyptus'>eucalyptus</option>
-                            <option key='fes' value='fes'>fes</option>
-                            <option key='frost' value='frost'>frost</option>
-                            <option key='hairspray' value='hairspray'>hairspray</option>
-                            <option key='hokusai' value='hokusai'>hokusai</option>
-                            <option key='incognito' value='incognito'>incognito</option>
-                            <option key='linen' value='linen'>linen</option>
-                            <option key='peacock' value='peacock'>peacock</option>
-                            <option key='primavera' value='primavera'>primavera</option>
-                            <option key='quartz' value='quartz'>quartz</option>
-                            <option key='red_rock' value='red_rock'>red_rock</option>
-                            <option key='refresh' value='refresh'>refresh</option>
-                            <option key='sizzle' value='sizzle'>sizzle</option>
-                            <option key='sonnet' value='sonnet'>sonnet</option>
-                            <option key='ukulele' value='ukulele'>ukulele</option>
-                            <option key='zorro' value='zorro'>zorro</option>
-                        </select>
-                        Original: <img width="100" height="100" src={photoSelected.imageUrl} alt='original ' /><br></br>
-                        Preview: <img width="100" height="100" src={filteredImage} alt='filtered' /><br></br>
-                        <button className="btn btn-success my-2 my-sm-0" type="button"
-                            onClick={() => handleApplyFilter()}>Apply this filter to the selected gallery image</button>
-                    </form>
+
+                    </div>
+                    <aside>
+                        <div>
+                            <form>
+                                <div className="col-12 col-md-12 col-lg-12 col-sm-4 sidePanel">
+                                    <div className="card shadow-2-strong mt-3" style={{ width: 300 }}>
+                                        Please select a photo
+
+                                        {isSelected &&
+                                            <div>
+                                                <label className="form-label mx-3 mt-3" htmlFor="newKeyword">Add keywords to photo</label>
+                                                <div>
+                                                    <input type="text" id="newKeyword" onChange={(e) => handleNewKeywordInput(e)} required autoFocus
+                                                        className="form-control mx-2" style={{ width: 280 }} placeholder="Enter keywords" value={keywordsToAdd} />
+                                                </div>
+
+                                                <label className="form-label mx-3 mt-3" htmlFor="original">Original Image </label>
+                                                <img id="original" className="mx-2 mt-1" style={{ width: 200, height: 150 }} src={photoSelected.imageUrl} alt='original image' />
+
+                                                {/* <img className="mx-2 mt-1" style={{width: 200, height: 150}} src='/images/placeholder.jpg' alt="placeholder image" /> */}
+
+                                                {filteredImage !== "" &&
+                                                    <>
+                                                        <label className="form-label mx-3 mt-3" htmlFor="filterPreview">Filter Preview </label>
+                                                        <img id="filterPreview" className="mx-2 mt-1" style={{ width: 200, height: 150 }} src={filteredImage} alt='filtered image' />
+                                                    </>
+                                                }
+
+                                                <label className="form-label mx-3 mt-2" htmlFor="imageTrans">Image filters </label>
+                                                <div className="dd-btn-div">
+                                                    <select name="imageTrans" id="imageTrans" style={{ width: 135, height: 40 }}
+                                                        onChange={(e) => handleFilterPreview(e)} className="form-select mx-2 my-2" >
+                                                        <option value="0">Select filter</option>
+                                                        <option key='al_dente' value='al_dente'>al_dente</option>
+                                                        <option key='athena' value='athena'>athena</option>
+                                                        <option key='audrey' value='audrey'>audrey</option>
+                                                        <option key='aurora' value='aurora'>aurora</option>
+                                                        <option key='daguerre' value='daguerre'>daguerre</option>
+                                                        <option key='eucalyptus' value='eucalyptus'>eucalyptus</option>
+                                                        <option key='fes' value='fes'>fes</option>
+                                                        <option key='frost' value='frost'>frost</option>
+                                                        <option key='hairspray' value='hairspray'>hairspray</option>
+                                                        <option key='hokusai' value='hokusai'>hokusai</option>
+                                                        <option key='incognito' value='incognito'>incognito</option>
+                                                        <option key='linen' value='linen'>linen</option>
+                                                        <option key='peacock' value='peacock'>peacock</option>
+                                                        <option key='primavera' value='primavera'>primavera</option>
+                                                        <option key='quartz' value='quartz'>quartz</option>
+                                                        <option key='red_rock' value='red_rock'>red_rock</option>
+                                                        <option key='refresh' value='refresh'>refresh</option>
+                                                        <option key='sizzle' value='sizzle'>sizzle</option>
+                                                        <option key='sonnet' value='sonnet'>sonnet</option>
+                                                        <option key='ukulele' value='ukulele'>ukulele</option>
+                                                        <option key='zorro' value='zorro'>zorro</option>
+                                                    </select>
+                                                    <button className="btn btn-success mx-2 my-2" type="button" style={{ width: 150 }}
+                                                        onClick={() => handleSaveForm()}>Save</button>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </aside>
                 </div>
+
+                <br></br>
+
 
             </div>
         </>

@@ -30,8 +30,6 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", settings.uploadPreset);
-
-    // console.log("file", file);
     
     fetch(url, {
       method: 'POST',

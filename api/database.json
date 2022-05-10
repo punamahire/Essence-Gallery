@@ -44,13 +44,6 @@
       "id": 8
     },
     {
-      "name": "Nature at its best",
-      "date": "2022-05-02",
-      "userId": 1,
-      "layoutId": "3",
-      "id": 10
-    },
-    {
       "name": "Aim High",
       "date": "2022-05-01",
       "userId": 1,
@@ -73,10 +66,17 @@
     },
     {
       "name": "Planes",
-      "date": "2022-05-06",
+      "date": "2022-05-09",
       "userId": 2,
+      "layoutId": "1",
+      "id": 13
+    },
+    {
+      "name": "Test",
+      "date": "2022-05-08",
+      "userId": 1,
       "layoutId": "2",
-      "id": 10
+      "id": 14
     }
   ],
   "photos": [
@@ -174,81 +174,22 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651500251/essence/eezszru7snfmczctj2hw.jpg",
       "galleryId": 8,
       "userId": 2,
-      "id": 52
+      "id": 52,
+      "keywords": "blue,green,bird"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651500296/essence/gxgxwyusjemb2gz7rgbp.webp",
       "galleryId": 8,
       "userId": 2,
-      "id": 53
+      "id": 53,
+      "keywords": "hi,colorful,bird"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651500303/essence/mylvkcinapifoawx9oz9.jpg",
       "galleryId": 8,
       "userId": 2,
-      "id": 54
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651518799/essence/ljbntspoloehaifhjej3.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 64
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651518801/essence/kpcsdjtaixecgacvrh3b.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 65
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651518809/essence/anzedtvrsh0lxdotlvdk.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 68
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768073/essence/at_peace_yljsuc.webp",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 72
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768080/essence/red_flowers_zehnfz.webp",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 73
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768084/essence/sky_on_fire_p63imq.jpg",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 74
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768088/essence/that_evening_trhv65.jpg",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 75
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768100/essence/dew_drop_hmqcyg.jpg",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 76,
-      "keywords": "dew drop,green,water"
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768109/essence/golden_mountain_amubvf.jpg",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 77,
-      "keywords": "blue,mountain,red,water"
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768117/essence/drops_tuidu8.webp",
-      "galleryId": 5,
-      "userId": 1,
-      "id": 78
+      "id": 54,
+      "keywords": "owl,bird,eyes,serious"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768121/essence/crystal_clean_water_vl6ito.webp",
@@ -261,30 +202,6 @@
       "galleryId": 5,
       "userId": 1,
       "id": 80
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768661/essence/fall_colors_yzjxqi.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 88
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768670/essence/pink_flower_kbj3ji.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 89
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768680/essence/sun_v2wzcs.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 91
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651768685/essence/those_colors_efxnit.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 92
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651776482/essence/orange_fall_color_olrbrk.jpg",
@@ -320,31 +237,28 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777248/essence/bird_with_crown_cy9tvg.jpg",
       "galleryId": 8,
       "userId": 2,
-      "id": 99
+      "id": 99,
+      "keywords": "crown,red eye"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777251/essence/why_so_serious_fv50dm.jpg",
       "galleryId": 8,
       "userId": 2,
-      "id": 100
+      "id": 100,
+      "keywords": "white,attitude,serious,eyes"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777255/essence/love_birds_ugb3vs.jpg",
       "galleryId": 8,
       "userId": 2,
-      "id": 101
+      "id": 101,
+      "keywords": "love,birds,together,colorful"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777266/essence/birds_u5duii.jpg",
       "galleryId": 8,
       "userId": 2,
       "id": 103
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777272/essence/oh_owl_odjkqs.jpg",
-      "galleryId": 8,
-      "userId": 2,
-      "id": 104
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778269/essence/CatchyEye_160319_8491_fxt6ax.jpg",
@@ -502,7 +416,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778628/essence/CatchyEye_160813_1208_iah0tz.jpg",
       "galleryId": 11,
       "userId": 1,
-      "id": 136
+      "id": 136,
+      "keywords": "up,red,smoke,plane"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778645/essence/CatchyEye_160813_1209_ockhb1.jpg",
@@ -541,40 +456,10 @@
       "id": 144
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651779502/essence/flowers_ybtbzk.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:refresh/v1651779502/essence/flowers_ybtbzk.webp",
       "galleryId": 5,
       "userId": 1,
       "id": 145
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651801693/essence/all_pink_rrw3bq.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 146
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651801708/essence/orange_fall_color_o7afbi.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 147
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651801716/essence/sky_on_fire_uew6m0.jpg",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 148
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651801743/essence/northern_lights_g37s8w.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 150
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651801747/essence/ray_of_light_lyhnab.webp",
-      "galleryId": 10,
-      "userId": 1,
-      "id": 151
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802073/essence/at_peace1_iutcge.webp",
@@ -583,7 +468,7 @@
       "id": 152
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802077/essence/majestic_tkzm5y.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:refresh//v1651802077/essence/majestic_tkzm5y.webp",
       "galleryId": 5,
       "userId": 1,
       "id": 153
@@ -598,133 +483,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802084/essence/rainbow_nbc9a5.jpg",
       "galleryId": 5,
       "userId": 1,
-      "id": 155
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802291/essence/CatchyEye_160326_8558_qfiarg.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 156
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802295/essence/CatchyEye_160326_8565_ijgqtj.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 157
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802303/essence/CatchyEye_160326_8568_jpqeke.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 158
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802309/essence/CatchyEye_160326_8579_wzusm2.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 159
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802312/essence/CatchyEye_160326_8582_ulfhuw.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 160
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802318/essence/CatchyEye_160326_8583_nddbyf.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 161
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802374/essence/CatchyEye_160326_8597_mjiu5k.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 162
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802384/essence/CatchyEye_160326_8603_bbv3fo.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 163
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802389/essence/CatchyEye_160326_8611_haihiv.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 164
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802397/essence/CatchyEye_160326_8685_yjvjet.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 165
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802411/essence/CatchyEye_160326_8791_mj8snm.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 166
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651802411/essence/CatchyEye_160326_8799_btvvw4.jpg",
-      "galleryId": 13,
-      "userId": 4,
-      "id": 168
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854696/essence/CatchyEye_160604_3483_rod5zu.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 169
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160604_3375_eeuwdk.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 170
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160604_2252_kmibgd.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 171
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854696/essence/CatchyEye_160604_2226_aaxvvb.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 172
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854696/essence/CatchyEye_160604_2251_kpxh7u.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 173
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160604__agnmts.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 174
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160604_3524_x4ln7n.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 175
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160813__bfyqd4.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 176
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651854697/essence/CatchyEye_160813_1208_hww9tz.jpg",
-      "galleryId": 14,
-      "userId": 2,
-      "id": 177
+      "id": 155,
+      "keywords": "clouds,colors"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651505282/essence/zn3lpaeb3re2bx8q6weq.jpg",
@@ -733,106 +493,118 @@
       "id": 60
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3375_nsnpjf.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_2226_wld0mf.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 61
+      "id": 156
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2226_asxi4s.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_3375_xcx3mz.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 62
+      "id": 157
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604__bggrmi.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_3483_ygphcw.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 63
+      "id": 158
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2251_tzakm0.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_2251_trlnvn.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 64
+      "id": 159
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_2252_xkkdly.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_2252_cxt2eb.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 65
+      "id": 160
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3483_bthckl.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604__fe8ekr.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 66
+      "id": 161
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813_1207_fokwdp.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160604_3524_wilfsc.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 67
+      "id": 162
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813_1208_hunpdc.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160813__qdsepp.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 68
+      "id": 163
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160813__qpsgad.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160813_1207_cxvams.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 69
+      "id": 164
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863505/essence/CatchyEye_160604_3524_azwoyf.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160813_1208_nupyrl.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 70
+      "id": 165
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1219_i97cjl.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117686/essence/CatchyEye_160813_1209_vo71uc.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 71
+      "id": 166
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1209_z5elcv.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1283_ecewij.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 72
+      "id": 167
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1492_mj31ms.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1487_pem7gp.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 73
+      "id": 168
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1227_c23bki.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1227_xpqjvp.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 74
+      "id": 169
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1283_txh49y.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1492_kfabm8.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 75
+      "id": 170
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1487_gt1abh.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1219_e5wdeu.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 76
+      "id": 171
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651863506/essence/CatchyEye_160813_1505_nn21dr.jpg",
-      "galleryId": 10,
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652117687/essence/CatchyEye_160813_1505_nhwplg.jpg",
+      "galleryId": 13,
       "userId": 2,
-      "id": 77
+      "id": 172
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652121477/essence/2019-May-DJI_0243_yx1dg3.jpg",
+      "galleryId": 14,
+      "userId": 1,
+      "id": 176
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652121477/essence/2019-May-DJI_0229_krguzz.jpg",
+      "galleryId": 14,
+      "userId": 1,
+      "id": 177
     }
   ],
   "layouts": [
