@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Row, Col } from 'react-bootstrap'
 import { getPhotosByGalleryId } from "../../modules/PhotoManager";
 import './GalleryCard.css'
@@ -8,8 +8,6 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
   const [photos, setPhotos] = useState([]);
   const [confirmDialog, setConfirmDialog] = useState(false);
-  const [showGalleryPics, setShowGalleryPics] = useState(false);
-  const navigate = useNavigate();
   let activeUser = JSON.parse(sessionStorage.getItem("gallery_user"));
 
   const getPhotosFromGallery = () => {
@@ -48,7 +46,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
                 <div>
                   <Link to={`/galleries/${singleGallery.id}/photos`} className="btn btn-primary">
                     Show gallery pics
-                  </Link>
+                  </Link> 
                 </div>
                 <br/>
 

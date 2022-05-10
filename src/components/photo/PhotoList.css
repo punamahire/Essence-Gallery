@@ -11,11 +11,28 @@
 
 .search-input {
     margin-right: 0.25em;
+    width: 218px;
+}
+
+.photos-aside-div {
+  display: flex;
 }
 
 .allPhotos-div {
-    margin-top: 1em;
+  flex: 3 3;
+  margin-top: 1em;
 }
+
+.sidePanel {
+  flex: 1 1;
+} 
+
+.dd-btn-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+
 
 /* img selection */
 
