@@ -3,7 +3,6 @@
     display: flex;
 }
 
-
 .card-color {
     background-color: #FFF6EA;
 }
@@ -12,4 +11,7 @@
     background-color: #f7debd !important;
 }
 
-
+.paginate-div ul {
+    justify-content: center;
+    margin-bottom: 0;
+}

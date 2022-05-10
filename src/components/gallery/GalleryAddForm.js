@@ -64,7 +64,7 @@ export const GalleryAddForm = () => {
             <div className="col-12 col-md-9 col-lg-7 col-xl-10">
               <div className="card" style={{ borderRadius: 15 }}>
                 <div className="card-body p-5">
-                  <h2 className="text-center mb-5">Create new Gallery</h2>
+                  <h2 className="text-center mb-5">Create New Gallery</h2>
                   <form className="form--login">
                     <div className="form-outline mb-4">
                       <label className="form-label label-font-size" htmlFor="name">Gallery Name</label>

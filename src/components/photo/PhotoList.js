@@ -220,14 +220,14 @@ export const PhotoList = () => {
                                                 </div>
 
                                                 <label className="form-label mx-3 mt-3" htmlFor="original">Original Image </label>
-                                                <img id="original" className="mx-2 mt-1" style={{ width: 200, height: 150 }} src={photoSelected.imageUrl} alt='original image' />
+                                                <img id="original" className="mx-5 mt-1" style={{ width: 200, height: 150 }} src={photoSelected.imageUrl} alt='original image' />
 
                                                 {/* <img className="mx-2 mt-1" style={{width: 200, height: 150}} src='/images/placeholder.jpg' alt="placeholder image" /> */}
 
                                                 {filteredImage !== "" &&
                                                     <>
                                                         <label className="form-label mx-3 mt-3" htmlFor="filterPreview">Filter Preview </label>
-                                                        <img id="filterPreview" className="mx-2 mt-1" style={{ width: 200, height: 150 }} src={filteredImage} alt='filtered image' />
+                                                        <img id="filterPreview" className="mx-5 mt-1" style={{ width: 200, height: 150 }} src={filteredImage} alt='filtered image' />
                                                     </>
                                                 }
 
@@ -270,10 +270,7 @@ export const PhotoList = () => {
                         </div>
                     </aside>
                 </div>
-
                 <br></br>
-
-
             </div>
         </>
     );

@@ -82,7 +82,7 @@ export const GalleryEditForm = () => {
               <div className="card" style={{ borderRadius: 15 }}>
                 <div className="card-body p-5">
                   <h2 className="text-center mb-5">Update {gallery.name}</h2>
-                  <form className="form--login">
+                  <form >
                     <div className="form-outline mb-4">
                       <label className="form-label label-font-size" htmlFor="name">Gallery Name</label>
 
