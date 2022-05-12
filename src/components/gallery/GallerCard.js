@@ -12,6 +12,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
   const [photos, setPhotos] = useState([]);
   const [currentPhotos, setCurrentPhotos] = useState(null);
   const [pageCount, setPageCount] = useState(0);
+  
   // Here we use photo offsets; we could also use page offsets
   // following the API or data we are working with.
   const [photoOffset, setPhotoOffset] = useState(0);
@@ -21,9 +22,6 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * photosPerPage) % photos.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setPhotoOffset(newOffset);
   };
 
@@ -44,9 +42,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
   useEffect(() => {
     // Fetch photos from another resources.
     const endOffset = photoOffset + photosPerPage;
-    console.log(`Loading photos from ${photoOffset} to ${endOffset}`);
     setCurrentPhotos(photos.slice(photoOffset, endOffset));
-    console.log(photos.length);
     setPageCount(Math.ceil(photos.length / photosPerPage));
   }, [photos, photoOffset, photosPerPage]);
 
@@ -55,7 +51,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
   
       {(activeUser.id === singleGallery.userId) &&
 
-        <div className="card" style={{ marginTop: '20px' }}>
+        <div className="card" style={{ marginTop: '20px', marginBottom: '10px' }}>
           <div className="card-header card-header-footer-color">
             <strong>Gallery Name: {singleGallery.name}</strong>
           </div>
