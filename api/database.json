@@ -93,22 +93,25 @@
       "keywords": "sun,deer,orange,sunset"
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352500/essence/kgysqpja7asyzyj1d87u.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:eucalyptus/v1651352500/essence/kgysqpja7asyzyj1d87u.webp",
       "galleryId": 6,
       "userId": 2,
-      "id": 19
+      "id": 19,
+      "keywords": "undefined,pink sky,lonely tree,water,clouds"
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352503/essence/hf84ssqeqddsp5qjicbx.jpg",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:al_dente/v1651352503/essence/hf84ssqeqddsp5qjicbx.jpg",
       "galleryId": 6,
       "userId": 2,
-      "id": 20
+      "id": 20,
+      "keywords": "beach,sand,shells"
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352506/essence/xrgslti1kyjznjn7h2mz.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:zorro/v1651352506/essence/xrgslti1kyjznjn7h2mz.webp",
       "galleryId": 6,
       "userId": 2,
-      "id": 21
+      "id": 21,
+      "keywords": "undefined,green"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352515/essence/m7yojeof63bqcqe5pypg.webp",
@@ -129,16 +132,18 @@
       "id": 24
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352526/essence/ye0ghrqpxzhxuepsfyc5.jpg",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:red_rock/v1651352526/essence/ye0ghrqpxzhxuepsfyc5.jpg",
       "galleryId": 6,
       "userId": 2,
-      "id": 25
+      "id": 25,
+      "keywords": "undefined,trail"
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352528/essence/zv4oo7n5jukubp0gp59w.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:primavera/v1651352528/essence/zv4oo7n5jukubp0gp59w.webp",
       "galleryId": 6,
       "userId": 2,
-      "id": 26
+      "id": 26,
+      "keywords": "undefined,rock,colorful"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651352531/essence/nssarnhifjsvclbfdvns.webp",
@@ -171,14 +176,14 @@
       "id": 51
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651500251/essence/eezszru7snfmczctj2hw.jpg",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:primavera/v1651500251/essence/eezszru7snfmczctj2hw.jpg",
       "galleryId": 8,
       "userId": 2,
       "id": 52,
-      "keywords": "blue,green,bird"
+      "keywords": "small bird,yellow,green,blue"
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651500296/essence/gxgxwyusjemb2gz7rgbp.webp",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:athena/v1651500296/essence/gxgxwyusjemb2gz7rgbp.webp",
       "galleryId": 8,
       "userId": 2,
       "id": 53,
@@ -202,30 +207,6 @@
       "galleryId": 5,
       "userId": 1,
       "id": 80
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651776482/essence/orange_fall_color_olrbrk.jpg",
-      "galleryId": 6,
-      "userId": 2,
-      "id": 94
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651776486/essence/ray_of_light_v553rz.webp",
-      "galleryId": 6,
-      "userId": 2,
-      "id": 95
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651776493/essence/unique_pqtbwa.webp",
-      "galleryId": 6,
-      "userId": 2,
-      "id": 96
-    },
-    {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651776499/essence/serenity_vdfv3d.jpg",
-      "galleryId": 6,
-      "userId": 2,
-      "id": 97
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651777246/essence/fly_high_bndvrq.jpg",
@@ -267,10 +248,11 @@
       "id": 111
     },
     {
-      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778271/essence/CatchyEye_160319_8496_twammn.jpg",
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/e_art:sonnet/v1651778271/essence/CatchyEye_160319_8496_twammn.jpg",
       "galleryId": 12,
       "userId": 2,
-      "id": 112
+      "id": 112,
+      "keywords": "white yellow"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778273/essence/CatchyEye_160326_8558_nloc5p.jpg",
@@ -319,7 +301,8 @@
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778290/essence/CatchyEye_160326_8597_cdjdjg.jpg",
       "galleryId": 12,
       "userId": 2,
-      "id": 120
+      "id": 120,
+      "keywords": "bright,pink,yellow"
     },
     {
       "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1651778291/essence/CatchyEye_160326_8603_d5gbjj.jpg",
@@ -611,6 +594,18 @@
       "galleryId": 14,
       "userId": 1,
       "id": 177
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652293315/essence/orange_bird_vzayex.webp",
+      "galleryId": 8,
+      "userId": 2,
+      "id": 179
+    },
+    {
+      "imageUrl": "https://res.cloudinary.com/dzsq4y4ed/image/upload/v1652293605/essence/long_beck_qhjhn8.webp",
+      "galleryId": 8,
+      "userId": 2,
+      "id": 180
     }
   ],
   "layouts": [

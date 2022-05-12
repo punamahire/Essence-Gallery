@@ -23,14 +23,14 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
   }
 
   // upload selected photo to cloudinary
-  function uploadFile(file) {
+  const uploadFile = (file) => {
 
     const url = `${settings.apiBaseURL}/image/upload`;
 
     const formData = new FormData();
     formData.append("file", file);
     formData.append("upload_preset", settings.uploadPreset);
-    
+
     fetch(url, {
       method: 'POST',
       body: formData
@@ -56,26 +56,20 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
       })
       .catch(err => console.error(err));
 
-    // // Update progress (can be used to show progress indicator)
-    // xhr.upload.addEventListener("progress", (e) => {
-    //   setProgress(Math.round((e.loaded * 100.0) / e.total));
-    //   console.log(Math.round((e.loaded * 100.0) / e.total));
-    // });
-
   }
 
   useEffect(() => {
-    function dragEnter(e) {
+    const dragEnter = (e) => {
       e.stopPropagation();
       e.preventDefault();
     }
 
-    function dragOver(e) {
+    const dragOver = (e) => {
       e.stopPropagation();
       e.preventDefault();
     }
 
-    function drop(e) {
+    const drop = (e) => {
       e.stopPropagation();
       e.preventDefault();
 
@@ -113,21 +107,18 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
         style={{ height: 200, width: '99.5%' }}
       >
         <section className="flex justify-center items-center h-full">
-          {progress === 0 ? (
-            <div className="text-secondary text-center">
-              <div>Drag and drop images here</div>
-              <div>or</div>
-              <button
-                className="btn btn-info"
-                onClick={handleImageUpload}
-                type="button"
-              >
-                Browse
-              </button>
-            </div>
-          ) : (
-            <span className="text-gray-700">{progress}%</span>
-          )}
+
+          <div className="text-secondary text-center">
+            <div>Drag and drop images here</div>
+            <div>or</div>
+            <button
+              className="btn btn-info"
+              onClick={handleImageUpload}
+              type="button"
+            >
+              Browse
+            </button>
+          </div>
 
           <input
             ref={fileSelect}
@@ -136,6 +127,7 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
             style={{ display: "none" }}
             onChange={(e) => handleFiles(e.target.files)}
           />
+
         </section>
       </div>
 

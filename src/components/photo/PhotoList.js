@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import { getPhotosByGalleryId, updatePhoto, getPhotoById } from "../../modules/PhotoManager"
@@ -13,8 +13,8 @@ export const PhotoList = () => {
     const [isSelected, setIsSelected] = useState(false);
     const [keywordsToAdd, setKeywordsToAdd] = useState("");
     const [filteredImage, setFilteredImage] = useState("");
+    const [resetSelDialog, setResetSelDialog] = useState(false);
 
-    const [value, toggleValue] = useReducer(previous => !previous, false);
     const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"));
     const { galleryId } = useParams();
 
@@ -44,10 +44,16 @@ export const PhotoList = () => {
     const imageSelected = (photoId) => {
         console.log("image clicked", photoId);
 
-        getPhotoById(photoId).then(photoFromAPI => {
-            setPhotoSelected(photoFromAPI);
-            setIsSelected(true);
-        })
+        if (filteredImage || keywordsToAdd) {
+            // if user selects a photo and then immediately selects another photo
+            // prompt the user to cancel current selection before selecting another photo
+            setResetSelDialog(true);
+        } else {
+            getPhotoById(photoId).then(photoFromAPI => {
+                setPhotoSelected(photoFromAPI);
+                setIsSelected(true);
+            })
+        }
     }
 
     // search the photos for the keywords entered
@@ -106,14 +112,12 @@ export const PhotoList = () => {
                         setFilteredImage(photoSelected.imageUrl?.replace('/upload/', `/upload/e_art:${event.target.value}/`));
                     }
                 }
-
             }
         } else {
 
-            // if the user accidently selects the 0th option from the dropdown
-            // prompt for selecting filter from the dropdown.
-            window.alert('Selected value is not an image filter. Please select another value.');
-
+            // if the user accidently selects the 0th option (Select filter) 
+            // from the dropdown then do not show filter preview.
+            setFilteredImage("");
         }
     }
 
@@ -124,6 +128,11 @@ export const PhotoList = () => {
         let newKeywords = "";
         if (keywordsToAdd !== "") {
             newKeywords = keywordsToAdd;
+
+            // if the photo already have keywords, add to the existing keywords
+            if (photoSelected.keywords !== "") {
+                newKeywords = photoSelected.keywords + ',' + newKeywords;
+            }
         } else {
             newKeywords = photoSelected?.keywords;
         }
@@ -154,9 +163,32 @@ export const PhotoList = () => {
             // to the selected photo, and update the component state (galleryPhotos)
             getPhotosFromGallery();
 
-            // update the state to clear the input field
+            // update component states to clear the input field
             setKeywordsToAdd("");
+            setFilteredImage("");
+            setIsSelected(false);
+            setPhotoSelected({});
         })
+    }
+
+    // reset the current selections
+    const handleCancelForm = () => {
+
+        if (filteredImage) {
+            setFilteredImage("");
+        }
+
+        if (keywordsToAdd) {
+            setKeywordsToAdd("");
+        }
+
+        if (isSelected) {
+            setIsSelected(false);
+        }
+
+        if (photoSelected) {
+            setPhotoSelected({});
+        }
     }
 
     // got the photos from the gallery on the component's first render
@@ -177,14 +209,13 @@ export const PhotoList = () => {
                 </div>
                 <div className="photos-aside-div">
                     <div className="allPhotos-div">
-                        {console.log("foundPhotos", foundPhotos)}
                         {foundPhotos.length > 0 ?
                             <Row>
                                 {foundPhotos.map(photo => {
                                     return (<div className="col-sm-4" key={photo.id}>
-                                        <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
-                                            src={photo.imageUrl} alt="3 column grid"
-                                            onClick={() => imageSelected(photo.id)}></img>
+                                        <img style={{ width: 300 }}
+                                            src={photo.imageUrl} alt="3 column grid">
+                                        </img>
                                     </div>)
                                 })
                                 }
@@ -193,7 +224,7 @@ export const PhotoList = () => {
                             <Row>
                                 {galleryPhotos.map(photo => {
                                     return (<div className="col-sm-4" key={photo.id}>
-                                        <img style={{ width: 300 }} className={`${isSelected ? `selected-${photo.id}` : "not-selected"}`}
+                                        <img style={{ width: 300 }} className={`${photo.id === photoSelected.id ? "selected" : ""}`}
                                             src={photo.imageUrl} alt="3 column grid"
                                             onClick={() => imageSelected(photo.id)}></img>
                                     </div>)
@@ -206,11 +237,21 @@ export const PhotoList = () => {
                     </div>
                     <aside>
                         <div>
+                            <dialog className="dialog dialog--auth" style={{ borderRadius: '0.5rem' }} open={resetSelDialog}>
+                                <div>Click cancel to clear current selection</div> <br></br>
+                                    <button
+                                        className="btn btn-primary text-center"
+                                        onClick={(e) => setResetSelDialog(false)}
+                                    >
+                                    OK
+                                    </button>
+                            </dialog>
                             <form>
                                 <div className="col-12 col-md-12 col-lg-12 col-sm-4 sidePanel">
-                                    <div className="card shadow-2-strong mt-3" style={{ width: 300 }}>
-                                        Please select a photo
-
+                                    <div className="card shadow-2-strong mt-3" style={{ width: 300, backgroundColor: '#FFF6EA' }}>
+                                        <label className="form-label mx-3 mt-2 label-sel-pic" htmlFor="form-card">
+                                            <span className={`${isSelected ? "hideLabel" : "showBlue"}`}> Please select a photo </span>
+                                        </label>
                                         {isSelected &&
                                             <div>
                                                 <label className="form-label mx-3 mt-3" htmlFor="newKeyword">Add keywords to photo</label>
@@ -222,8 +263,6 @@ export const PhotoList = () => {
                                                 <label className="form-label mx-3 mt-3" htmlFor="original">Original Image </label>
                                                 <img id="original" className="mx-5 mt-1" style={{ width: 200, height: 150 }} src={photoSelected.imageUrl} alt='original image' />
 
-                                                {/* <img className="mx-2 mt-1" style={{width: 200, height: 150}} src='/images/placeholder.jpg' alt="placeholder image" /> */}
-
                                                 {filteredImage !== "" &&
                                                     <>
                                                         <label className="form-label mx-3 mt-3" htmlFor="filterPreview">Filter Preview </label>
@@ -231,10 +270,10 @@ export const PhotoList = () => {
                                                     </>
                                                 }
 
-                                                <label className="form-label mx-3 mt-2" htmlFor="imageTrans">Image filters </label>
-                                                <div className="dd-btn-div">
-                                                    <select name="imageTrans" id="imageTrans" style={{ width: 135, height: 40 }}
-                                                        onChange={(e) => handleFilterPreview(e)} className="form-select mx-2 my-2" >
+                                                <label className="form-label mx-3 mt-3" htmlFor="imageTrans">Image filters </label>
+                                                <div>
+                                                    <select name="imageTrans" id="imageTrans" style={{ width: 280 }}
+                                                        onChange={(e) => handleFilterPreview(e)} className="form-select mx-2 my-1" >
                                                         <option value="0">Select filter</option>
                                                         <option key='al_dente' value='al_dente'>al_dente</option>
                                                         <option key='athena' value='athena'>athena</option>
@@ -258,13 +297,17 @@ export const PhotoList = () => {
                                                         <option key='ukulele' value='ukulele'>ukulele</option>
                                                         <option key='zorro' value='zorro'>zorro</option>
                                                     </select>
+                                                </div>
+                                                <div className="form-btn-div my-3">
                                                     <button className="btn btn-success mx-2 my-2" type="button" style={{ width: 150 }}
+                                                        onClick={() => handleCancelForm()}>Cancel</button>
+                                                    <button className={`${keywordsToAdd || filteredImage ? "btn btn-success mx-2 my-2" : "btn btn-secondary mx-2 my-2 disabled"}`}
+                                                        type="button" style={{ width: 150 }}
                                                         onClick={() => handleSaveForm()}>Save</button>
                                                 </div>
                                             </div>
                                         }
                                     </div>
-
                                 </div>
                             </form>
                         </div>
