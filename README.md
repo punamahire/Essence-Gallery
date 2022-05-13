@@ -6,8 +6,8 @@ React app built as a front-end capstone at Nashville Software School.
 <details>
 <summary>Preview</summary>
 
-![Preview1](/readme_image/web1.png)
-![Preview2](/readme_image/web2.png)
+![Preview1](/readme_images/web1.png)
+![Preview2](/readme_images/web2.png)
 
 </details>
 
@@ -106,7 +106,7 @@ npm install
 ### ERD
 ---
 
-![ERD](/readme_image/erd.png)
+![ERD](/readme_images/erd.png)
 
 ### Wireframe
 
