@@ -9,7 +9,18 @@ export const GalleryPreview = () => {
   const { galleryId } = useParams();
   const [gallery, setGallery] = useState({});
   const [photos, setPhotos] = useState([]);
-  const [numOfColumns, setNumOfColumns] = useState(0)
+  const [numOfColumns, setNumOfColumns] = useState(0);
+
+  // get the username from the current url because the user won't be logged in
+  // on the preview-page. Since, we can't access user info from session storage,
+  // get it using useParams.
+  const { userName } = useParams();
+
+  let authorName = userName;
+  if (authorName.includes('-')) {
+    // replace the hyphen with a space to display the author name
+    authorName = authorName.replace('-', ' ');
+  }
 
   const getPhotosFromGallery = () => {
     // After the data comes back from the API, we
@@ -42,6 +53,7 @@ export const GalleryPreview = () => {
           </span>
         </h3>
         <h5>Date: {gallery.date}</h5>
+        <h5>Author: {authorName}</h5>
       </div>
 
       {(numOfColumns === 3 || numOfColumns === 4) &&

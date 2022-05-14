@@ -48,6 +48,7 @@ export const GalleryAddForm = () => {
       //add new gallery object to the database.
       //once complete, change the url and display the edit gallery view
       //for the user to add photos to the newly-added-gallery.
+      //setting isLoading=true will not allow user
       setIsLoading(true);
       addGallery(galleryObj)
         .then(addedGallery => {

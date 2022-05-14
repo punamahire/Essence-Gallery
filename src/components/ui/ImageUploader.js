@@ -7,7 +7,6 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
 
   const dropbox = useRef(null);
   const fileSelect = useRef(null);
-  const [progress, setProgress] = useState(0);
 
   async function handleImageUpload() {
     if (fileSelect) {

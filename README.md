@@ -50,30 +50,29 @@ The application enable users to:
 
 - Share gallery link with others
 
-- Search specfic photos from a gallery
+- Search specfic photos in a gallery
 
 - Preview and apply image filters to photos
 
+- View gallery pictures using links such as "next", "previous", and page numbers to navigate between pages
 
 <h3  id="technology-link">Technology Stack</h3>
 
 ---
 
-- HTML/CSS
+<img src='https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/json.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/html-5.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/css-3.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/javascript.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/bootstrap.svg' width='50' height='50' />
+<img src='https://raw.githubusercontent.com/get-icon/geticon/master/icons/github-icon.svg' width='50' height='50' />
+<img src='/readme_images/cloudinary-logo.jpeg' width='50' height='50' />
 
-- Javascript
 
-- React
+- ERD - created using dbdiagram.io
 
-- JSON Server
-
-- ERD (created using )
-
-- Wireframe (created using Figma)
-
-- Git/GitHub
-
-- Cloudinary for remote storage of photos
+- Wireframe - created using Figma
 
  
 ---
@@ -113,8 +112,6 @@ npm install
 ---
 
 [Figma Wireframe](https://www.figma.com/file/g1aEQBSdD5jseqISkSmLZ1/Essence-Gallery?node-id=3%3A2)
-
-<h3  id="license-link">License</h3>
 
 ---
 
