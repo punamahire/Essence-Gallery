@@ -6,6 +6,9 @@ strong {
     background-color: #f7a88b;
 }
 
+/* this prevents the scrollbar from showing up anywhere in the application
+where it is added. Setting overflow: auto property would show the scrollbar.
+*/
 ::-webkit-scrollbar {
     display: none;
   }

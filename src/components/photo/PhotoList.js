@@ -42,18 +42,14 @@ export const PhotoList = () => {
 
     // update states to identify which photo is selected 
     const imageSelected = (photoId) => {
-        console.log("image clicked", photoId);
+        // clear the current selection when user selects another photo,
+        // but keep the new photo selected.
+        handleCancelForm(false);
 
-        if (filteredImage || keywordsToAdd) {
-            // if user selects a photo and then immediately selects another photo
-            // prompt the user to cancel current selection before selecting another photo
-            setResetSelDialog(true);
-        } else {
-            getPhotoById(photoId).then(photoFromAPI => {
-                setPhotoSelected(photoFromAPI);
-                setIsSelected(true);
-            })
-        }
+        getPhotoById(photoId).then(photoFromAPI => {
+            setPhotoSelected(photoFromAPI);
+            setIsSelected(true);
+        })
     }
 
     // search the photos for the keywords entered
@@ -130,7 +126,7 @@ export const PhotoList = () => {
             newKeywords = keywordsToAdd;
 
             // if the photo already have keywords, add to the existing keywords
-            if (photoSelected.keywords !== "") {
+            if (photoSelected.keywords) {
                 newKeywords = photoSelected.keywords + ',' + newKeywords;
             }
         } else {
@@ -172,7 +168,7 @@ export const PhotoList = () => {
     }
 
     // reset the current selections
-    const handleCancelForm = () => {
+    const handleCancelForm = (reset_image_selected = true) => {
 
         if (filteredImage) {
             setFilteredImage("");
@@ -186,7 +182,7 @@ export const PhotoList = () => {
             setIsSelected(false);
         }
 
-        if (photoSelected) {
+        if (reset_image_selected && photoSelected) {
             setPhotoSelected({});
         }
     }
@@ -212,8 +208,8 @@ export const PhotoList = () => {
                         {foundPhotos.length > 0 ?
                             <Row>
                                 {foundPhotos.map(photo => {
-                                    return (<div className="col-sm-4" key={photo.id}>
-                                        <img style={{ width: 300 }}
+                                    return (<div className="col-sm-4 pb-3" key={photo.id}>
+                                        <img style={{ width: 300, height: 200 }}
                                             src={photo.imageUrl} alt="3 column grid">
                                         </img>
                                     </div>)
@@ -223,8 +219,8 @@ export const PhotoList = () => {
                             :
                             <Row>
                                 {galleryPhotos.map(photo => {
-                                    return (<div className="col-sm-4" key={photo.id}>
-                                        <img style={{ width: 300 }} className={`${photo.id === photoSelected.id ? "selected" : ""}`}
+                                    return (<div className="col-sm-4 pb-3" key={photo.id}>
+                                        <img style={{ width: 300, height: 200 }} className={`${photo.id === photoSelected.id ? "selected" : "not-selected"}`}
                                             src={photo.imageUrl} alt="3 column grid"
                                             onClick={() => imageSelected(photo.id)}></img>
                                     </div>)
@@ -250,7 +246,7 @@ export const PhotoList = () => {
                                 <div className="col-12 col-md-12 col-lg-12 col-sm-4 sidePanel">
                                     <div className="card shadow-2-strong mt-3" style={{ width: 300, backgroundColor: '#FFF6EA' }}>
                                         <label className="form-label mx-3 mt-2 label-sel-pic" htmlFor="form-card">
-                                            <span className={`${isSelected ? "hideLabel" : "showBlue"}`}> Please select a photo </span>
+                                            <span className={`${isSelected ? "hideLabel" : "showBlue"}`}> Please select a photo to edit </span>
                                         </label>
                                         {isSelected &&
                                             <div>

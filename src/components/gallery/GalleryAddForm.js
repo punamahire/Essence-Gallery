@@ -48,6 +48,11 @@ export const GalleryAddForm = () => {
       //add new gallery object to the database.
       //once complete, change the url and display the edit gallery view
       //for the user to add photos to the newly-added-gallery.
+      
+      //we are here when user clicks save gallery. As we are in the process of
+      //making http POST request to add gallery it could take a moment to do so.
+      //In the meantime, if user clicks save gallery again, we do not want anything 
+      //to happen. Hence, we set isLoading=true which disables the button.
       setIsLoading(true);
       addGallery(galleryObj)
         .then(addedGallery => {

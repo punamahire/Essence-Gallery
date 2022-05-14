@@ -3,21 +3,30 @@ import { Link } from "react-router-dom";
 import { Row, Col } from 'react-bootstrap'
 import { getPhotosByGalleryId } from "../../modules/PhotoManager";
 import ReactPaginate from "react-paginate";
-
 import './GalleryCard.css'
 
 export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
 
-  const photosPerPage = 3;
   const [photos, setPhotos] = useState([]);
-  const [currentPhotos, setCurrentPhotos] = useState(null);
-  const [pageCount, setPageCount] = useState(0);
-  
+  const [confirmDialog, setConfirmDialog] = useState(false);
+
+  // --- pagination states initialization ---
   // Here we use photo offsets; we could also use page offsets
   // following the API or data we are working with.
   const [photoOffset, setPhotoOffset] = useState(0);
-  const [confirmDialog, setConfirmDialog] = useState(false);
+  const [currentPhotos, setCurrentPhotos] = useState(null);
+  const [pageCount, setPageCount] = useState(0);
+  const photosPerPage = 3; // display 3 photos at a time on gallery card
+  // --- pagination state defination ends ---
+
   let activeUser = JSON.parse(sessionStorage.getItem("gallery_user"));
+  let userName = activeUser.name;
+
+  if (userName.includes(' ')) {
+    // replace the space with a hyphen so as to prevent showing
+    // %20 in the url
+    userName = userName.replace(' ', '-');
+  }
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
@@ -39,8 +48,11 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
     getPhotosFromGallery();
   }, []);
 
+  // pagination: if any of the following dependencies are changed,
+  // it would trigger a call to useEffect.
+  // photos is required as a dependency to show pagination (pages) 
+  // for each gallery.
   useEffect(() => {
-    // Fetch photos from another resources.
     const endOffset = photoOffset + photosPerPage;
     setCurrentPhotos(photos.slice(photoOffset, endOffset));
     setPageCount(Math.ceil(photos.length / photosPerPage));
@@ -60,15 +72,14 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
               <Col className="card-content">
                 <p>Date: {new Date(singleGallery.date).toDateString()} </p>
                 <div className="input-btn-div">
-                  <input value={`http://localhost:3000/gallery-preview/${singleGallery.id}`} disabled={true} style={{ width: 300, height: 38 }} />&nbsp;
-                  <button className="btn btn-info" type="button"
-                    onClick={() => { navigator.clipboard.writeText(`http://localhost:3000/gallery-preview/${singleGallery.id}`) }} >Copy</button>
-
+                  <input value={`http://localhost:3000/gallery-preview/${userName}/${singleGallery.id}`} disabled={true} style={{ width: 400, height: 38 }} />&nbsp;
                 </div><br></br>
                 <div>
                   <Link to={`/galleries/${singleGallery.id}/photos`} className="btn btn-primary">
                     Show gallery pics
-                  </Link> 
+                  </Link> &nbsp;
+                  <button className="btn btn-info" type="button"
+                    onClick={() => { navigator.clipboard.writeText(`http://localhost:3000/gallery-preview/${userName}/${singleGallery.id}`) }} >Copy link</button>
                 </div>
                 <br/>
 
@@ -119,7 +130,7 @@ export const GalleryCard = ({ singleGallery, handleDeleteGallery }) => {
                 Edit Gallery
               </Link>&nbsp;&nbsp;&nbsp;
               <button type="button" onClick={() => setConfirmDialog(true)} className="btn btn-danger">Remove Gallery</button>&nbsp;&nbsp;&nbsp;
-              <a href={`http://localhost:3000/gallery-preview/${singleGallery.id}`} target="_blank" className="btn btn-success">Preview</a>
+              <a href={`http://localhost:3000/gallery-preview/${userName}/${singleGallery.id}`} target="_blank" className="btn btn-success">Preview</a>
             </div>
           </div>
 

@@ -13,7 +13,7 @@ export const addGallery = newGallery => {
 }
 
 export const getAllGalleries = () => {
-    return fetch(`${remoteURL}/galleries`)
+    return fetch(`${remoteURL}/galleries?_sort=date&_order=desc`)
     .then(res => res.json())
 }
 

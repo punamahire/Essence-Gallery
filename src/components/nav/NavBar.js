@@ -17,7 +17,7 @@ export const NavBar = (props) => {
     <>
       <Navbar bg="dark" variant="dark">
         <Container>
-          <Navbar.Brand className="brittany">Essence Gallery</Navbar.Brand>
+          <Navbar.Brand className="brittany" href='/galleries'>Essence Gallery</Navbar.Brand>
 
           {/* for gallery-preview, login and register page the galleries
               link should not show up in the nav-bar */}
