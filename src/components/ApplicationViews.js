@@ -24,7 +24,6 @@ export const ApplicationViews = ({ setAuthUser, isAuthenticated, setIsAuthentica
           <Route exact path="/galleries/:galleryId/photos" element={<PhotoList />} />
 
         </Route>
-        {/* <Route path="/gallery-preview/:galleryId" element={<GalleryPreview />} /> */}
         <Route path="/gallery-preview/:userName/:galleryId" element={<GalleryPreview />} />
         <Route path="/login" element={<Login setAuthUser={setAuthUser} />} />
         <Route path="/register" element={<Register />} />
