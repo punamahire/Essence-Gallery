@@ -12,6 +12,7 @@ export const GalleryEditForm = () => {
   const [gallery, setGallery] = useState({});
   const [layouts, setLayouts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [newlyAddedPhotos, setNewlyAddedPhotos] = useState([]);
 
   const { galleryId } = useParams();
   const navigate = useNavigate();
@@ -52,6 +53,31 @@ export const GalleryEditForm = () => {
     //pass the editedGallery object to the database
     updateGallery(editedGallery)
       .then(() => navigate("/galleries"))
+  }
+
+  const addPhotosToGallery = (newPhotos) => {
+    if (newPhotos) {
+      // newlyAddedPhotos holds the ids of photos that user just added to the gallery.
+      // This component state is needed only to handle the CANCEL operation.
+      setNewlyAddedPhotos(newPhotos);
+    }
+    // ImageUploader() already added photos to database. Update the state to reflect
+    // all the photos from the database.
+    getPhotosFromGallery();
+  }
+
+  const handleCancelSave = () => {
+
+    // if user clicks cancel instead of save gallery, photos just added
+    // by the user should not be saved in the gallery. Delete these
+    // newly added photos from the gallery, and redirect back to galleries.
+    if (newlyAddedPhotos) {
+
+      for (let i = 0; i < newlyAddedPhotos.length; i++) {
+        handleDeletePhoto(newlyAddedPhotos[i]);
+      }
+    }
+    navigate("/galleries");
   }
 
   useEffect(() => {
@@ -112,7 +138,7 @@ export const GalleryEditForm = () => {
                       <ImageUploader
                         key={gallery.id}
                         gallery={gallery}
-                        updatePhotos={getPhotosFromGallery}
+                        updatePhotos={(recentAddedPhotos) => addPhotosToGallery(recentAddedPhotos)}
                       />
                     </div>
 
@@ -137,7 +163,7 @@ export const GalleryEditForm = () => {
                       <button
                         type="button"
                         className="btn btn-primary"
-                        onClick={() => { navigate("/galleries") }}>
+                        onClick={() => handleCancelSave()}>
                         Cancel
                       </button>
                     </div>

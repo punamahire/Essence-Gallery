@@ -13,7 +13,6 @@ export const PhotoList = () => {
     const [isSelected, setIsSelected] = useState(false);
     const [keywordsToAdd, setKeywordsToAdd] = useState("");
     const [filteredImage, setFilteredImage] = useState("");
-    const [resetSelDialog, setResetSelDialog] = useState(false);
 
     const activeUser = JSON.parse(sessionStorage.getItem("gallery_user"));
     const { galleryId } = useParams();
@@ -168,7 +167,7 @@ export const PhotoList = () => {
     }
 
     // reset the current selections
-    const handleCancelForm = (reset_image_selected = true) => {
+    const handleCancelForm = (resetImageSelected = true) => {
 
         if (filteredImage) {
             setFilteredImage("");
@@ -182,7 +181,7 @@ export const PhotoList = () => {
             setIsSelected(false);
         }
 
-        if (reset_image_selected && photoSelected) {
+        if (resetImageSelected && photoSelected) {
             setPhotoSelected({});
         }
     }
@@ -195,22 +194,23 @@ export const PhotoList = () => {
     return (
         <>
             {/* Display photos from the gallery in a 4 column grid */}
-            <div className="container vh-100 overflow-auto">
-
+            <div className="container vh-100 overflow-auto">               
                 <div className="search-div">
                     <input className="search-input mr-sm-2" type="search" placeholder="Search photos" aria-label="Search"
                         id="keyword" onChange={(e) => handleControlledInputChange(e)} required autoFocus value={keywordsToSearch} />
                     <button className="btn btn-success my-2 my-sm-0" type="submit"
                         onClick={() => handleSearchPhotos()}>Search</button>
                 </div>
+                
                 <div className="photos-aside-div">
                     <div className="allPhotos-div">
                         {foundPhotos.length > 0 ?
                             <Row>
                                 {foundPhotos.map(photo => {
                                     return (<div className="col-sm-4 pb-3" key={photo.id}>
-                                        <img style={{ width: 300, height: 200 }}
-                                            src={photo.imageUrl} alt="3 column grid">
+                                        <img style={{ width: 300, height: 200 }} className={`${photo.id === photoSelected.id ? "selected" : "not-selected"}`}
+                                            src={photo.imageUrl} alt="3 column grid"
+                                            onClick={() => imageSelected(photo.id)}>
                                         </img>
                                     </div>)
                                 })
@@ -233,19 +233,10 @@ export const PhotoList = () => {
                     </div>
                     <aside>
                         <div>
-                            <dialog className="dialog dialog--auth" style={{ borderRadius: '0.5rem' }} open={resetSelDialog}>
-                                <div>Click cancel to clear current selection</div> <br></br>
-                                    <button
-                                        className="btn btn-primary text-center"
-                                        onClick={(e) => setResetSelDialog(false)}
-                                    >
-                                    OK
-                                    </button>
-                            </dialog>
                             <form>
                                 <div className="col-12 col-md-12 col-lg-12 col-sm-4 sidePanel">
                                     <div className="card shadow-2-strong mt-3" style={{ width: 300, backgroundColor: '#FFF6EA' }}>
-                                        <label className="form-label mx-3 mt-2 label-sel-pic" htmlFor="form-card">
+                                        <label className="form-label mx-2 mt-2 label-sel-pic" htmlFor="form-card">
                                             <span className={`${isSelected ? "hideLabel" : "showBlue"}`}> Please select a photo to edit </span>
                                         </label>
                                         {isSelected &&
