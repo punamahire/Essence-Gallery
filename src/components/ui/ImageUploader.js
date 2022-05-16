@@ -7,6 +7,7 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
 
   const dropbox = useRef(null);
   const fileSelect = useRef(null);
+  let recentAddedPhotos = [];
 
   async function handleImageUpload() {
     if (fileSelect) {
@@ -48,7 +49,12 @@ export const ImageUploader = ({ gallery, updatePhotos }) => {
           };
 
           addPhoto(photo).then(addedPhoto => {
-            updatePhotos();
+
+            // save the ids of photos that we are adding to the gallery.
+            // If user presses cancel instead of save gallery,
+            // we need to delete these photos from gallery.
+            recentAddedPhotos.push(addedPhoto.id);
+            updatePhotos(recentAddedPhotos);
           })
 
         }
